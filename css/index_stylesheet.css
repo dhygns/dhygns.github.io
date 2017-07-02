@@ -6,9 +6,16 @@
 }
 
 body, html {
+  overflow: hidden;
   width : 100%;
   height : 100%;
   color : #ff0000;
+}
+
+
+#header {
+  width : 100%;
+  height : 170px;
 }
 
 #div_label {
@@ -16,17 +23,27 @@ body, html {
   height : 20px;
 }
 
-#div_main {
+#div_top_menu {
   width : 100%;
   height : calc(100% - 20px);
 }
 
-#div_top {
+#bodies {
+  overflow:auto;
   width : 100%;
-  height : 150px;
+  height : calc(100% - 170px);
 }
 
-#div_body {
-  width : 100%;
-  height : calc(100% - 150px);
+#div_left_menu {
+  position: relative;
+  float:left;
+  width : 150px;
+  height : 100%;
+}
+
+#div_main {
+  position: relative;
+  float:left;
+  width : calc(100% - 150px);
+  height : 100%;
 }

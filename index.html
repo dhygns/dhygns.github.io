@@ -5,19 +5,26 @@
     <link rel="stylesheet" type="text/css" href="./css/index_stylesheet.css" />
   </head>
   <body>
-    <div id="div_label"></div>
-    <div id="div_main">
-      <div id="div_top"> </div>
-      <div id="div_body"></div>
+    <div id="header">
+      <div id="div_label"> </div>
+      <div id="div_top_menu"> </div>
+    </div>
+    <div id="bodies">
+      <div id="div_left_menu"> </div>
+      <div id="div_main"> </div>
     </div>
 
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="./js/n3d-main.js"></script>
     <script src="./js/n3d-label.js"></script>
+    <script src="./js/n3d-top-menu.js"></script>
+    <script src="./js/n3d-left-menu.js"></script>
     <script>
 
     console.log("website initialized...!");
     console.log(new Div_Label());
+    console.log(new Div_Top());
+    console.log(new Div_Left());
 
     </script>
   </body>

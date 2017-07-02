@@ -12,13 +12,14 @@ class Main {
     }
 
     this.rdrr.setSize(this.dom.offsetWidth, this.dom.offsetHeight);
+    this.onResize(this.dom.offsetWidth, this.dom.offsetHeight);
     this.dom.appendChild(this.rdrr.domElement);
 
 
     //regist event listeners
     window.addEventListener("resize", (e) => {
-      console.log(this.dom.offsetHeight);
       this.rdrr.setSize(this.dom.offsetWidth, this.dom.offsetHeight);
+      this.onResize(this.dom.offsetWidth, this.dom.offsetHeight);
     });
 
     this.dom.addEventListener("mousemove", ({pageX, pageY})=>{
@@ -30,6 +31,10 @@ class Main {
 
     this.oldt = new Date(); this.newt = new Date();
     requestAnimationFrame(this.update.bind(this, this.rdrr, 0.0));
+  }
+
+  onResize(width, height) {
+
   }
 
   onMousemove(x, y) {
