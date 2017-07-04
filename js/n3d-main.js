@@ -3,7 +3,7 @@
 
 class Main {
   constructor(mainid) {
-    this.rdrr = new THREE.WebGLRenderer({alpha : false});
+    this.rdrr = new THREE.WebGLRenderer({alpha : true});
     this.dom = document.getElementById(mainid);
 
     if(this.dom == null) {
