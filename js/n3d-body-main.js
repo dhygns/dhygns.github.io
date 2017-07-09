@@ -1,7 +1,7 @@
 
-class Div_Left extends Main {
+class Div_Body_Main extends Main {
   constructor(mainid) {
-    super("div_left_menu");
+    super("div_body_main");
 
 
     this.scene = new THREE.Scene();
@@ -43,8 +43,7 @@ class Div_Left extends Main {
   }
 
 
-  onResize(w, h) {
-    console.log(w,h);
+  onResize(w, h) { 
   }
 
   onMousemove(x, y) {

@@ -10,21 +10,22 @@
       <div id="div_top_menu"> </div>
     </div>
     <div id="bodies">
-      <div id="div_left_menu"> </div>
-      <div id="div_main"> </div>
+      <div id="div_body_main"> </div>
     </div>
 
-    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="./lib/three.min.js"></script>
     <script src="./js/n3d-main.js"></script>
     <script src="./js/n3d-label.js"></script>
     <script src="./js/n3d-top-menu.js"></script>
-    <script src="./js/n3d-left-menu.js"></script>
+    <script src="./js/n3d-body-main.js"></script>
     <script>
 
-    console.log("website initialized...!");
-    console.log(new Div_Label());
-    console.log(new Div_Top());
-    console.log(new Div_Left());
+    window.addEventListener("load", ()=>{
+      console.log("website initialized...!");
+      console.log(new Div_Label());
+      console.log(new Div_Top_Menu());
+      console.log(new Div_Body_Main());
+    })
 
     </script>
   </body>

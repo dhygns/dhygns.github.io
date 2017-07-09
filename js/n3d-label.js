@@ -3,7 +3,6 @@ class Div_Label extends Main {
   constructor(mainid) {
     super("div_label");
 
-
     this.scene = new THREE.Scene();
     this.camera = new THREE.Camera();
 
@@ -16,6 +15,7 @@ class Div_Label extends Main {
     this.object.add(new THREE.Mesh(
       new THREE.PlaneGeometry(2.0, 2.0),
       new THREE.ShaderMaterial({
+        transparent : true,
         uniforms : this.uniforms,
         fragmentShader : `
         #define PI ` + Math.PI + `
@@ -33,7 +33,10 @@ class Div_Label extends Main {
           color.g = 0.5 + 0.5 * smoothstep(0.5 + 0.3 * sin(pivg), 0.5 + 0.3 * sin(pivg) - 0.2, vtex.y);
           color.b = 0.2 + 0.8 * smoothstep(1.0, 0.5, vtex.y);
 
-          gl_FragColor = vec4(color, 1.0);
+          float alpha = 1.0 - smoothstep(
+            length(vec3(0.9)), length(vec3(1.0)), length(color.rgb));
+
+          gl_FragColor = vec4(color, alpha);
         }
         `,
         vertexShader : `

@@ -3,14 +3,14 @@
 
 class Main {
   constructor(mainid) {
-    this.rdrr = new THREE.WebGLRenderer({alpha : true});
-    this.dom = document.getElementById(mainid);
 
+    this.dom = document.getElementById(mainid);
     if(this.dom == null) {
       console.warn(mainid + " doesn't exist.");
       return;
     }
 
+    this.rdrr = new THREE.WebGLRenderer({alpha : true});
     this.rdrr.setSize(this.dom.offsetWidth, this.dom.offsetHeight);
     this.onResize(this.dom.offsetWidth, this.dom.offsetHeight);
     this.dom.appendChild(this.rdrr.domElement);
