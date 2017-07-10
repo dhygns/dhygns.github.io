@@ -29,6 +29,13 @@ body, html {
   height : 100%;
 }
 
+#div_top_menu_text {
+  visibility: hidden;
+  position : absolute;
+  width : 100%;
+  height : 520px;
+}
+
 #bodies {
   overflow:auto;
   width : 100%;
