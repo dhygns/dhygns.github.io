@@ -326,7 +326,7 @@ class DT_Particle extends THREE.Scene {
     super();
 
 
-    this.idxs = 16384 * 2;
+    this.idxs = 16384 * 8;
     this.texw = Math.min(this.idxs, 16384);
     this.texh = Math.min(Math.ceil(this.idxs / 16384), 16384);
 
@@ -380,11 +380,11 @@ class DT_Particle extends THREE.Scene {
         vec2 pos = (Vec4ToVec2(v) - 0.5) * 255.0;
 
         vec2 dit = ((unif_mouse - 0.5) * vec2(1.0, 0.1) + 0.5) - Vec4ToVec2(v);
-        pos += - normalize(dit) * smoothstep(0.0, 0.1, length(dit) * 3.0) *10.0 ;
+        pos += - normalize(dit) * smoothstep(0.0, 0.01, length(dit) * 3.0) * 10.0 ;
 
         mat4 m;
-        m[0] = vec4(3.0, 0.0, 0.0, 0.0);
-        m[1] = vec4(0.0, 3.0, 0.0, 0.0);
+        m[0] = vec4(2.0, 0.0, 0.0, 0.0);
+        m[1] = vec4(0.0, 2.0, 0.0, 0.0);
         m[2] = vec4(0.0, 0.0, 1.0, 0.0);
         m[3] = vec4(pos, 0.0, 1.0);
         return m;
@@ -424,13 +424,14 @@ class Div_Top_Filter {
 
     this.perlin = new Perlin(rdrr, 8, 8);
 
-    this.rtttex = new THREE.WebGLRenderTarget(512, 512, {
+    this.canvas = document.getElementById("div_top_menu_text");
+    this.canctx = this.canvas.getContext("2d");
+
+    this.rtttex = new THREE.WebGLRenderTarget(this.canvas.width, this.canvas.height, {
       minFilter : THREE.LinearFilter,
       magFilter : THREE.LinearFilter
     });
 
-    this.canvas = document.getElementById("div_top_menu_text");
-    this.canctx = this.canvas.getContext("2d");
 
     this.canctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.canctx.fillStyle = "black";
