@@ -1,7 +1,7 @@
 
 
 
-class Main {
+class N3d_abstract {
   constructor(mainid) {
 
     this.dom = document.getElementById(mainid);
@@ -22,9 +22,9 @@ class Main {
       this.onResize(this.dom.offsetWidth, this.dom.offsetHeight);
     });
 
-    this.dom.addEventListener("mousemove", ({pageX, pageY})=>{
+    window.addEventListener("mousemove", ({pageX, pageY})=>{
       const x = 0.0 + pageX / this.dom.offsetWidth;
-      const y = 1.0 - pageY / this.dom.offsetHeight;
+      const y = 1.0 - (pageY- window.pageYOffset) / this.dom.offsetHeight ;
 
       this.onMousemove(x, y);
     });

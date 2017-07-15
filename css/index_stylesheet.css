@@ -6,52 +6,70 @@
 }
 
 body, html {
-  overflow: hidden;
   width : 100%;
   height : 100%;
-  color : #ff0000;
 }
 
-
-#header {
+#background-fixed {
+  position: fixed;
   width : 100%;
-  height : 520px;
+  height : 100%;
 }
 
-#div_label {
+#main {
+  font-family: "Oswald", cursive;
+  position: absolute;
+  width : 100%;
+  height : 100%;
+}
+
+.header {
+  position : relative;
+
+  width : 100%;
+  height : 100%;
+}
+
+.title {
   position : absolute;
-  width : 100%;
-  height : 20px;
-}
+  top : calc(50% - 20px);
 
-#div_top_menu {
-  width : 100%;
-  height : 100%;
-}
+  font-size : 20px;
+  text-align: center;
 
-#div_top_menu_text {
-  visibility: hidden;
-  position : absolute;
-  width : 100%;
-  height : 520px;
-}
-
-#bodies {
-  overflow:auto;
-  width : 100%;
-  height : calc(100% - 170px);
-}
-
-#div_body_main {
-  position: relative;
-  float:left;
   width : 100%;
   height : 100%;
 }
 
-#div_main {
-  position: relative;
-  float:left;
-  width : calc(100% - 150px);
-  height : 100%;
+
+.pannel {
+  position : relative;
+
+
+  width : 100%;
+  max-width : 800px;
+
+  margin-top : 25%;
+  margin-bottom : 25%;
+  margin-left : auto;
+  margin-right : auto;
+
+  overflow :hidden;
+}
+
+.pannel-title {
+  position : relative;
+  font-size : 30px;
+  font-weight: bold;
+  margin :0px;
+  margin-bottom: 15px;
+  width : auto;
+  height : auto;
+}
+
+.pannel-board {
+  background-color : #CCFFDD;
+  margin: 0px;
+  width : 100%;
+  padding-top : 40%;
 }

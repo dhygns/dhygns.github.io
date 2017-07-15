@@ -1,34 +1,48 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-    <title> art of web </title>
+    <title> Donghyeon kim - Creative Developer </title>
+    <!-- web font load -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+    <script src="scripts/utils/index-fontloader.js"> </script>
+
+    <!-- css load -->
     <link rel="stylesheet" type="text/css" href="./css/index_stylesheet.css" />
+
+    <!-- javascripts load -->
+    <script src="lib/three.min.js"></script>
+    <script src="lib/n3d-perlin.js"></script>
+    <script src="scripts/three/n3d-abstract.js"></script>
+    <script src="scripts/three/n3d-background-fixed.js"> </script>
+
   </head>
   <body>
-    <div id="header">
-      <div id="div_label"> </div>
-      <div id="div_top_menu">
-        <canvas id="div_top_menu_text"> </canvas>
+    <!-- html main -->
+    <div id="background-fixed">
+
+    </div>
+
+    <div id="main">
+      <div class="header">
+        <div class="title"> <h1>Kim Donghyeon</h1>creative developer </div>
+      </div>
+      <div class="pannel">
+        <div class="pannel-title"> Who Am I? </div>
+        <div class="pannel-board"> </div>
+      </div>
+      <div class="pannel">
+        <div class="pannel-title"> Who Am I? </div>
+        <div class="pannel-board"> </div>
+      </div>
+      <div class="pannel">
+        <div class="pannel-title"> Who Am I? </div>
+        <div class="pannel-board"> </div>
       </div>
     </div>
-    <div id="bodies">
-      <div id="div_body_main"> </div>
-    </div>
 
-    <script src="./lib/three.min.js"></script>
-    <script src="./js/n3d-main.js"></script>
-    <script src="./js/n3d-label.js"></script>
-    <script src="./js/n3d-top-menu.js"></script>
-    <script src="./js/n3d-body-main.js"></script>
     <script>
-
-    window.addEventListener("load", ()=>{
-      console.log("website initialized...!");
-      console.log(new Div_Label());
-      console.log(new Div_Top_Menu());
-      console.log(new Div_Body_Main());
-    })
-
+      console.log(new N3d_background_fixed());
     </script>
   </body>
 </html>
