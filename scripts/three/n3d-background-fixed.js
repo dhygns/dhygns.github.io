@@ -249,7 +249,7 @@ class Div_Top_Filter {
           tex.rg = mix(vtex, tex.rg, alpha);
           vec4 ret = texture2D(unif_wordtex, tex.rg);
 
-          ret = mix(ret, vec4(0.5, 0.6, 0.7, 0.8), alpha * 0.5);
+          ret = mix(ret, vec4(vtex * 0.5 + 0.5, 0.7, 0.8), alpha * 0.7);
 
           gl_FragColor = ret;//vec4(.rgb, 1.0);
         }
@@ -310,6 +310,7 @@ class N3d_background_fixed extends N3d_abstract{
 
   onMousemove(x, y) {
     //마우스 부분에 가까울수록 바깥쪽으로 add Force
+    if(window.pageYOffset < 100) return;
     this.mpos.x = (x - 0.5) * 2.0 + 0.5;
     this.mpos.y = (y - 0.5) * 2.0 + 0.5;
   }
@@ -317,6 +318,11 @@ class N3d_background_fixed extends N3d_abstract{
   update(rdrr, dt) {
     super.update();
     this.time += dt;
+
+    if(window.pageYOffset < 100) {
+      this.mpos.y = 0.5 + window.pageYOffset / window.innerHeight;
+      this.mpos.x = 0.5;
+    }
 
     this.mpos.x += 0.0001 * Math.sin(this.time * Math.PI);
     this.mpos.y += 0.0001 * Math.cos(this.time * Math.PI);

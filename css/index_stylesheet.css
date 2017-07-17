@@ -68,7 +68,14 @@ body, html {
 }
 
 .pannel-board {
-  background-color : #CCFFDD;
+  background-color : #AAAAAA;
   margin: 0px;
   width : 100%;
+}
+
+.pannel-board-demo {
+  background-color : #CCFFDD;
+  width : 100%;
+  max-width : 800px;
+  padding-top : 75%;
 }
