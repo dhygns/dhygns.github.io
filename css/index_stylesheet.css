@@ -67,15 +67,13 @@ body, html {
   height : auto;
 }
 
-.pannel-board {
-  background-color : #AAAAAA;
+.pannel-board {  
+  background-color : #EEEEEE;
   margin: 0px;
   width : 100%;
 }
 
 .pannel-board-demo {
-  background-color : #CCFFDD;
   width : 100%;
   max-width : 800px;
-  padding-top : 75%;
 }
