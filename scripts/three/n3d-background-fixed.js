@@ -93,7 +93,7 @@ class DT_Particle extends THREE.Scene {
     super();
 
 
-    this.idxs = 16384 * 1;
+    this.idxs = 4096 * 1;
     this.texw = Math.min(this.idxs, 16384);
     this.texh = Math.min(Math.ceil(this.idxs / 16384), 16384);
 

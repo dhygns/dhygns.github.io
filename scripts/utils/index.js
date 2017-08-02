@@ -7,7 +7,7 @@ WebGL, OpenGL, Threejs, Openframeworks...<br>
 `,
   dst :
 `<br>
-2013. Samsung SoftWare Membership.<br>
+2013. Samsung Software Membership.<br>
 2015. Joined Samsung Electronics.<br>
 2015. Software "Expert programmer" certification acquistion.<br>
 2015. Moved department at Interaction Group in VD Business.<br>

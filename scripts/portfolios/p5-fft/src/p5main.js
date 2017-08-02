@@ -44,7 +44,7 @@ class particle {
         //it have to do;
         this.position.x += this.velocity.x * dt;
         //this is custom logic 
-        this.position.y = window.innerHeight * 0.5 + fft * Math.sin(this.idx * Math.PI * 2.0 + this.position.x / window.innerWidth * Math.PI * 2.0 );//this.velocity.y * dt;
+        this.position.y = window.innerHeight * 0.5 + fft * Math.sin(this.idx * Math.PI * 2.0 + this.position.x / window.innerWidth * Math.PI * 8.0 );//this.velocity.y * dt;
         
         this.scale.x = this.scale.y = 0.2 + fft * 0.1;
 
