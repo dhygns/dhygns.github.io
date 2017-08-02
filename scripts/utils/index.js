@@ -29,7 +29,7 @@ WebGL, OpenGL, Threejs, Openframeworks...<br>
 const examples = {
   dom : document.getElementById("demos"),
   active : function(path) {
-    this.dom.innerHTML = `<object style="width:100%;height:600px;" type="text/html" data="./scripts/htmls/` + path + `/index.html"></object>`;
+    this.dom.innerHTML = `<object style="width:100%;height:600px;" type="text/html" data="./scripts/portfolios/` + path + `/index.html"></object>`;
   }
 }
 
