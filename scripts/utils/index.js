@@ -9,8 +9,8 @@ WebGL, OpenGL, Threejs, Openframeworks...<br>
 `<br>
 2013. Samsung Software Membership.<br>
 2015. Joined Samsung Electronics.<br>
-2015. Software "Expert programmer" certification acquistion.<br>
-2015. Moved department at Interaction Group in VD Business.<br>
+2015. "Expert programmer" acquistion of Software certification.<br>
+2015. Moved department to Interaction Group in VD Business.<br>
 2017. Joined ModuLab.<br>
 `,
   idx : 0,
