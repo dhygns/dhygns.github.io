@@ -150,8 +150,8 @@ class DT_Particle extends THREE.Scene {
         pos += - normalize(dit) * smoothstep(0.0, 0.01, length(dit) * 3.0) * 10.0 ;
 
         mat4 m;
-        m[0] = vec4(2.0, 0.0, 0.0, 0.0);
-        m[1] = vec4(0.0, 2.0, 0.0, 0.0);
+        m[0] = vec4(4.0, 0.0, 0.0, 0.0);
+        m[1] = vec4(0.0, 4.0, 0.0, 0.0);
         m[2] = vec4(0.0, 0.0, 1.0, 0.0);
         m[3] = vec4(pos, 0.0, 1.0);
         return m;

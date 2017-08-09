@@ -34,4 +34,4 @@ const examples = {
 }
 
 // for rendering
-// console.log(new N3d_background_fixed());
+console.log(new N3d_background_fixed());
