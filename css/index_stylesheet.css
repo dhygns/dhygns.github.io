@@ -9,6 +9,9 @@ body, html {
   width : 100%;
   height : 100%;
 }
+a {
+  margin : 0px;
+}
 
 #background-fixed {
   position: fixed;
@@ -25,7 +28,6 @@ body, html {
 
 .header {
   position : relative;
-
   width : 100%;
   height : 100%;
 }
@@ -76,4 +78,16 @@ body, html {
 .pannel-board-demo {
   width : 100%;
   max-width : 800px;
+}
+
+.pannel-logo {
+  width : auto;
+  height : 32px;
+}
+
+.pannel-portfolio {
+  margin : 10px;
+  height : 200px;
+  width : auto;
+  white-space:nowrap;
 }
