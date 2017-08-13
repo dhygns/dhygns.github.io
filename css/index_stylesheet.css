@@ -9,8 +9,10 @@ body, html {
   width : 100%;
   height : 100%;
 }
+
 a {
   margin : 0px;
+  white-space:nowrap;
 }
 
 #background-fixed {
@@ -86,8 +88,27 @@ a {
 }
 
 .pannel-portfolio {
-  margin : 10px;
+
+  display : inline;
+  float : left;
+  
+  margin-top : 10px;
+
   height : 200px;
   width : auto;
-  white-space:nowrap;
+}
+
+.pannel-img {
+  display : inline;
+  float : left;
+  width : auto;
+  height : 100%;
+}
+
+.pannel-img-right {
+  display : inline;
+  background-color: #CC99FF;
+  float : left;
+  width : 0px;
+  height : 100%;
 }
