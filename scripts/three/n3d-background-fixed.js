@@ -196,20 +196,31 @@ class Div_Top_Filter {
       magFilter: THREE.LinearFilter
     });
 
-    this.imgloader = new THREE.TextureLoader();
-    this.imgloader.load("./res/background.jpg", (img) => {
-      this.wortex = img;
-      this.wortex.minFilter = THREE.LinearFilter;
-      this.wortex.magFilter = THREE.LinearFilter;
+    // this.imgloader = new THREE.TextureLoader();
+    // this.imgloader.load("./res/background.jpg", (img) => {
+    //   this.wortex = img;
+    //   this.wortex.minFilter = THREE.LinearFilter;
+    //   this.wortex.magFilter = THREE.LinearFilter;
 
-      this.uniforms.unif_wordtex.value = this.wortex;
-    });
+    //   this.uniforms.unif_wordtex.value = this.wortex;
+    // });
+
+    // var image = document.getElementById("background-image");
+    var image = document.createElement("img");
+    image.onload = () =>{ this.wortex.needsUpdate = true; };
+    image.src = './res/background.jpg';
+
+    this.wortex = new THREE.Texture( image );
+    this.wortex.minFilter = THREE.LinearFilter;
+    this.wortex.magFilter = THREE.LinearFilter;
 
     this.uniforms = {
       unif_perlint: { type: "t", value: this.perlin.texture },
       unif_wordtex: { type: "t", value: this.wortex },
       unif_texture: { type: "t", value: this.rtttex.texture }
     };
+
+    this.uniforms.unif_wordtex.value = this.wortex;    
 
     this.camera = new THREE.Camera();
     this.scene = new THREE.Scene();

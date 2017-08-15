@@ -22,6 +22,11 @@ a {
   height : 100%;
 }
 
+#background-image {
+  position: absolute;
+  visibility: hidden;
+}
+
 #main {
   color : #FFFFFF;
   font-family: "Oswald", cursive;
