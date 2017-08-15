@@ -22,6 +22,7 @@ a {
 }
 
 #main {
+  color : #FFFFFF;
   font-family: "Oswald", cursive;
   position: absolute;
   width : 100%;
@@ -72,7 +73,7 @@ a {
 }
 
 .pannel-board {  
-  background-color : #EEEEEE;
+  /* background-color : #EEEEEE; */
   margin: 0px;
   width : 100%;
 }

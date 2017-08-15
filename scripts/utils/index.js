@@ -36,7 +36,7 @@ const examples = {
 }
 
 // for rendering
-// console.log(new N3d_background_fixed());
+console.log(new N3d_background_fixed());
 
 
 function resize() {
@@ -49,7 +49,7 @@ function resize() {
   for (var idx = 0; idx < portfolio.dom_portfolio.length; idx++) {
     const curr_dom = portfolio.dom_portfolio[idx].getElementsByClassName("pannel-img")[0];
 
-    if (width + curr_dom.offsetWidth < dom_width) {
+    if (width + curr_dom.offsetWidth + 50 * (idx - begin) < dom_width) {
       width += curr_dom.offsetWidth;
     }
     else {
@@ -79,9 +79,38 @@ function resize() {
       begin = idx;
       width = curr_dom.offsetWidth;
     }
+
+    if(idx == portfolio.dom_portfolio.length - 1) {
+      var left_width = dom_width - width;
+      var curr_width = width;
+      var pre = begin;
+      for (pre = begin; pre <= idx; pre++) {
+        const prev_dom = portfolio.dom_portfolio[pre].getElementsByClassName("pannel-img")[0];
+        const prev_lef = portfolio.dom_portfolio[pre].getElementsByClassName("pannel-img-right")[0];
+        const prev_rig = portfolio.dom_portfolio[pre].getElementsByClassName("pannel-img-right")[1];
+
+        const prev_width = (left_width * prev_dom.offsetWidth / curr_width * 0.5);
+
+        const obst_width = prev_width - 10;
+        const obst_margin = 10.0 + Math.min(0.0, obst_width);
+
+        prev_lef.style["width"] = Math.max(-1, obst_width - 1) + "px";
+        prev_lef.style["margin-left"] = "0px";
+        prev_lef.style["margin-right"] = obst_margin + "px";
+
+        prev_rig.style["width"] = Math.max(-1, obst_width - 1) + "px";
+        prev_rig.style["margin-left"] = obst_margin + "px";
+        prev_rig.style["margin-right"] = "0px";
+      }
+    }
+
   }
 }
-resize();
+
+window.onload = ()=>{
+  resize();
+
+};
 
 window.addEventListener("resize", () => {
   resize();

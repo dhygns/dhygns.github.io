@@ -1,14 +1,14 @@
 //particle motion
 class DT_Particle_Position_Object {
   constructor(w, h) {
-    this.temptexture = new THREE.WebGLRenderTarget(w, h, {minFilter : THREE.NearestFilter, magFilter : THREE.NearestFilter});
-    this.maintexture = new THREE.WebGLRenderTarget(w, h, {minFilter : THREE.NearestFilter, magFilter : THREE.NearestFilter});
+    this.temptexture = new THREE.WebGLRenderTarget(w, h, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
+    this.maintexture = new THREE.WebGLRenderTarget(w, h, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
 
     this.uniforms = {
       // unif_velocity : { type : "t", value : undefined},
-      unif_position : { type : "t", value : this.temptexture.texture},
-      unif_deltatime : { type : "1f", value : 0.0 },
-      unif_isinit : { type : "1f", value : 1.0}
+      unif_position: { type: "t", value: this.temptexture.texture },
+      unif_deltatime: { type: "1f", value: 0.0 },
+      unif_isinit: { type: "1f", value: 1.0 }
     };
 
     this.camera = new THREE.Camera();
@@ -16,15 +16,15 @@ class DT_Particle_Position_Object {
     this.rttsc = new THREE.Scene();
     this.rttsc.add(new THREE.Mesh(
       new THREE.PlaneGeometry(2.0, 2.0),
-      new THREE.MeshBasicMaterial({map : this.maintexture.texture})
+      new THREE.MeshBasicMaterial({ map: this.maintexture.texture })
     ));
 
     this.scene = new THREE.Scene();
     this.scene.add(new THREE.Mesh(
       new THREE.PlaneGeometry(2.0, 2.0),
       new THREE.ShaderMaterial({
-        uniforms : this.uniforms,
-        fragmentShader : `
+        uniforms: this.uniforms,
+        fragmentShader: `
         // uniform sampler2D unif_velocity;
         uniform sampler2D unif_position;
 
@@ -66,7 +66,7 @@ class DT_Particle_Position_Object {
           gl_FragColor = ret;
         }
         `,
-        vertexShader : `
+        vertexShader: `
         varying vec2 vtex;
         void main(void) {
           vtex = uv;
@@ -99,38 +99,38 @@ class DT_Particle extends THREE.Scene {
 
     this.vert = [
       //Front
-      -1.0, -1.0,  0.0,
-       1.0, -1.0,  0.0,
-       1.0,  1.0,  0.0,
-       1.0,  1.0,  0.0,
-      -1.0,  1.0,  0.0,
-      -1.0, -1.0,  0.0,
+      -1.0, -1.0, 0.0,
+      1.0, -1.0, 0.0,
+      1.0, 1.0, 0.0,
+      1.0, 1.0, 0.0,
+      -1.0, 1.0, 0.0,
+      -1.0, -1.0, 0.0,
     ];
 
     this.post = new DT_Particle_Position_Object(this.texw, this.texh);
 
     this.indx = [];
-    for(var idx = 0.5; idx < this.idxs; idx += 1.0) {
+    for (var idx = 0.5; idx < this.idxs; idx += 1.0) {
       this.indx.push((idx % this.texw) / this.texw);
       this.indx.push(Math.floor(idx / this.texw) / this.texh);
     }
 
     this.vert_attribute = new THREE.BufferAttribute(new Float32Array(this.vert), 3);
-    this.indx_attribute = new THREE.InstancedBufferAttribute(new Float32Array(this.indx), 2 , 1);
+    this.indx_attribute = new THREE.InstancedBufferAttribute(new Float32Array(this.indx), 2, 1);
 
     this.geom = new THREE.InstancedBufferGeometry();
     this.geom.addAttribute("position", this.vert_attribute);
     this.geom.addAttribute("indices", this.indx_attribute);
 
     this.uniforms = {
-      unif_position : { type : "t", value : this.post.maintexture.texture},
-      unif_mouse : { type : "2f", value : [0.0, 0.0]},
+      unif_position: { type: "t", value: this.post.maintexture.texture },
+      unif_mouse: { type: "2f", value: [0.0, 0.0] },
     };
 
     this.matr = new THREE.ShaderMaterial({
-      transparent : true,
-      uniforms : this.uniforms,
-      vertexShader : `
+      transparent: true,
+      uniforms: this.uniforms,
+      vertexShader: `
       attribute vec2 indices;
 
       uniform sampler2D unif_position;
@@ -162,7 +162,7 @@ class DT_Particle extends THREE.Scene {
         gl_Position = projectionMatrix * viewMatrix * modelMat() * vec4(position, 1.0);
       }
       `,
-      fragmentShader : `
+      fragmentShader: `
       varying vec2 vtex;
       void main(void) {
         float alpha = smoothstep( 0.5, 0.0, length(vtex - 0.5));
@@ -191,29 +191,24 @@ class Div_Top_Filter {
 
     this.perlin = new Perlin(rdrr, 8, 8);
 
-    this.canvas = document.createElement("canvas");
-    // this.canvas.style.width = "1920px";
-    // this.canvas.style.height = "1080px";
-
-    this.canctx = this.canvas.getContext("2d");
-    this.canctx.canvas.width = 800;
-    this.canctx.canvas.height = 600;
-    this.rtttex = new THREE.WebGLRenderTarget(this.canvas.width, this.canvas.height, {
-      minFilter : THREE.LinearFilter,
-      magFilter : THREE.LinearFilter
+    this.rtttex = new THREE.WebGLRenderTarget(300,240, {
+      minFilter: THREE.LinearFilter,
+      magFilter: THREE.LinearFilter
     });
 
-    this.drawfont();
+    this.imgloader = new THREE.TextureLoader();
+    this.imgloader.load("./res/background.jpg", (img) => {
+      this.wortex = img;
+      this.wortex.minFilter = THREE.LinearFilter;
+      this.wortex.magFilter = THREE.LinearFilter;
 
-    this.wortex = new THREE.Texture(this.canvas);
-    this.wortex.minFilter = THREE.LinearFilter;
-    this.wortex.magFilter = THREE.LinearFilter;
-    this.wortex.needsUpdate = true;
+      this.uniforms.unif_wordtex.value = this.wortex;
+    });
 
     this.uniforms = {
-      unif_perlint : { type : "t", value : this.perlin.texture},
-      unif_wordtex : { type : "t", value : this.wortex },
-      unif_texture : { type : "t", value : this.rtttex.texture}
+      unif_perlint: { type: "t", value: this.perlin.texture },
+      unif_wordtex: { type: "t", value: this.wortex },
+      unif_texture: { type: "t", value: this.rtttex.texture }
     };
 
     this.camera = new THREE.Camera();
@@ -221,16 +216,16 @@ class Div_Top_Filter {
     this.scene.add(new THREE.Mesh(
       new THREE.PlaneGeometry(2.0, 2.0),
       new THREE.ShaderMaterial({
-        uniforms : this.uniforms,
-        transparent : true,
-        vertexShader : `
+        uniforms: this.uniforms,
+        transparent: true,
+        vertexShader: `
         varying vec2 vtex;
         void main(void) {
           vtex = uv;
           gl_Position = vec4(position, 1.0);
         }
         `,
-        fragmentShader : `
+        fragmentShader: `
         #define PI ` + Math.PI + `
         uniform sampler2D unif_perlint;
         uniform sampler2D unif_wordtex;
@@ -258,30 +253,18 @@ class Div_Top_Filter {
     ))
   }
 
-  drawfont() {
-    this.canctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.canctx.fillStyle = "#888888";
-    this.canctx.font = "bold 8px Oswald";
-    this.canctx.fillText("Hi, I'm donghyeon kim!", 8, 16);
-
-    this.canctx.font = "4px Oswald";
-    this.canctx.fillText("Now, I'm working at Samsung Electronics.", 8, 32 + 16 * 0);
-    this.canctx.fillText("WebGL, three-js, Canvas, experiments, tools... ", 8, 32 + 16 * 1);
-  }
-
   onResize(w, h) {
-    this.drawfont();
-    this.wortex.needsUpdate = true;
   }
 
   update(rdrr, dt) {
+    if(this.wortex == undefined) return;
     this.perlin.update(dt);
     rdrr.render(this.targetscn, this.targetcam, this.rtttex);
     rdrr.render(this.scene, this.camera);
   }
 };
 
-class N3d_background_fixed extends N3d_abstract{
+class N3d_background_fixed extends N3d_abstract {
   constructor() {
     super("background-fixed");
     this.time = 0.0;
@@ -298,7 +281,7 @@ class N3d_background_fixed extends N3d_abstract{
   }
 
   onResize(w, h) {
-    if(this.camera) {
+    if (this.camera) {
       this.camera.aspect = window.innerWidth / window.innerHeight;
       this.camera.updateProjectionMatrix();
       this.filter.onResize(w, h);
@@ -310,7 +293,7 @@ class N3d_background_fixed extends N3d_abstract{
 
   onMousemove(x, y) {
     //마우스 부분에 가까울수록 바깥쪽으로 add Force
-    if(window.pageYOffset < 100) return;
+    if (window.pageYOffset < 100) return;
     this.mpos.x = (x - 0.5) * 2.0 + 0.5;
     this.mpos.y = (y - 0.5) * 2.0 + 0.5;
   }
@@ -319,7 +302,7 @@ class N3d_background_fixed extends N3d_abstract{
     super.update();
     this.time += dt;
 
-    if(window.pageYOffset < 100) {
+    if (window.pageYOffset < 100) {
       this.mpos.y = 0.5 + window.pageYOffset / window.innerHeight;
       this.mpos.x = 0.5;
     }
@@ -329,7 +312,7 @@ class N3d_background_fixed extends N3d_abstract{
 
     this.rpos.x += (this.mpos.x - this.rpos.x) * dt;
     this.rpos.y += (this.mpos.y - this.rpos.y) * dt;
-    if(this.scene.setm) this.scene.setm(this.rpos.x, this.rpos.y);
+    if (this.scene.setm) this.scene.setm(this.rpos.x, this.rpos.y);
 
     this.scene.update(rdrr, dt);
     this.filter.update(rdrr, dt);
