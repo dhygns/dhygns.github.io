@@ -24,7 +24,7 @@ a {
 
 #background-image {
   position: absolute;
-  visibility: hidden;
+  visibility: hidden; 
 }
 
 #main {
