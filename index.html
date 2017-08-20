@@ -1,75 +1,105 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <title> Donghyeon kim - Creative Developer </title>
-    <!-- web font load -->
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
-    <script src="scripts/utils/index-fontloader.js"> </script>
 
-    <!-- css load -->
-    <link rel="stylesheet" type="text/css" href="./css/index_stylesheet.css" />
+<head>
+  <title> Donghyeon kim - Creative Developer </title>
+  <!-- web font load -->
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <script src="scripts/utils/index-fontloader.js">
 
+  </script>
 
-    <!-- javascripts load -->
-    <script src="lib/three.min.js"></script>
-    <script src="lib/n3d-perlin.js"></script>
-    <script src="scripts/three/n3d-abstract.js"></script>
-    <script src="scripts/three/n3d-background-fixed.js"> </script>
-
-  </head>
-  <body>
-    <!-- Resources Loaded  -->
-    <img id="background-image" src="./res/background.png"> 
-
-    <!-- html main -->
-    <div id="background-fixed"></div>
+  <!-- css load -->
+  <link rel="stylesheet" type="text/css" href="./css/index_stylesheet.css" />
 
 
-    <div id="main">
-      <div class="header">
-        <div class="title"> <h1>Kim Donghyeon</h1>creative developer </div>
+  <!-- javascripts load -->
+  <script src="lib/three.min.js"></script>
+  <script src="lib/n3d-perlin.js"></script>
+  <script src="scripts/three/n3d-abstract.js"></script>
+  <script src="scripts/three/n3d-background-fixed.js">
+
+  </script>
+
+</head>
+
+<body>
+  <!-- Resources Loaded  -->
+  <img id="background-image" src="./res/background.png">
+
+  <!-- html main -->
+  <div id="background-fixed"></div>
+
+
+  <div id="main">
+    <div class="header">
+      <div class="title">
+        <h1>Kim Donghyeon</h1>creative developer </div>
+    </div>
+    <div class="pannel">
+      <div class="pannel-title">
+        Who Am I?
       </div>
-      <div class="pannel">
-        <div class="pannel-title">
-          Who Am I?
-        </div>
-        <div class="pannel-board" id="introduction">
-          Working at Samsung Electronics.<br>
-          WebGL, OpenGL, Threejs, Openframeworks... <br>
-          if you want to know more about me. <a href="javascript:intro.show();">Click this</a>.
-        </div>
+      <div class="pannel-board" id="introduction">
+        Working at Samsung Electronics.<br> WebGL, OpenGL, Threejs, Openframeworks... <br> if you want to know more about
+        me. <a href="javascript:intro.show();">Click this</a>.
       </div>
-      <!-- <div class="pannel">
+    </div>
+    <!-- <div class="pannel">
         <div class="pannel-title"> What I did? </div>
         <div class="pannel-board"> </div>
       </div> -->
-      <div class="pannel">
-        <div class="pannel-title"> Projects </div>
-          <a herf="localhost:3000" class="pannel-portfolio"><div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio00.gif"><div class="pannel-img-right"></div></a>
-          <a herf="localhost:3000" class="pannel-portfolio"><div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio01.gif"><div class="pannel-img-right"></div></a>
-          <a herf="localhost:3000" class="pannel-portfolio"><div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio02.gif"><div class="pannel-img-right"></div></a>
-          <a herf="localhost:3000" class="pannel-portfolio"><div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio03.gif"><div class="pannel-img-right"></div></a>
-          <a herf="localhost:3000" class="pannel-portfolio"><div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio04.gif"><div class="pannel-img-right"></div></a>
-          <a herf="localhost:3000" class="pannel-portfolio"><div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio05.gif"><div class="pannel-img-right"></div></a>
-          <a herf="localhost:3000" class="pannel-portfolio"><div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio06.gif"><div class="pannel-img-right"></div></a>
-          <!-- <a href="javascript:examples.active('n3d-snoise');"> [threejs] Art Of Cells </a> -->
-          <!-- <a href="javascript:examples.active('3d-rayMarching');"> [threejs] ray Marching Metaball </a> -->
-          <!-- <a href="javascript:examples.active('3d-fft-cube');"> [threejs] fft noise cube </a> -->
-          <!-- <a href="javascript:examples.active('n3d-oilpaint');"> [threejs] Oil PAINT </a><br> -->
-          <!-- <a href="javascript:examples.active('n3d-cloude');"> CLOUDE </a><br> -->
-          <!-- <a href="javascript:examples.active('p5-fft0');"> [p5] FFT Visualizer0 </a>           -->
-          <!-- <a href="javascript:examples.active('p5-fft');"> [P5] FFT Visualizer </a><br> -->
-          <!-- <div class="pannel-board-demo" id="demos"> </div> -->
-      </div>
-      <div class="pannel">
-        <div class="pannel-title"> Contact ME </div>
-        <!--GitHub_Logo  -->
-          <a href=" http://twitter.com/@dhygn1611"><img class="pannel-logo" src="./res/logos/TwitterLogo.png"></img></a>
-          <a href=" http://github.com/dhygns"><img class="pannel-logo" src="./res/logos/GitHub-Mark.png"></img></a><br>
-          PH : +8210-3891-1611 <br>
-      </div>
+    <div class="pannel">
+      <div class="pannel-title"> Projects </div>
+      <a href="http://dhygns.github.io/threejs-ink" class="pannel-portfolio">
+        <div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio00.gif">
+        <div class="pannel-img-right"></div>
+      </a>
+      <a href="http://dhygns.github.io/threejs-ink" class="pannel-portfolio">
+        <div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio01.gif">
+        <div class="pannel-img-right"></div>
+      </a>
+      <a href="http://dhygns.github.io/3d-fft-cube" class="pannel-portfolio">
+        <div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio02.gif">
+        <div class="pannel-img-right"></div>
+      </a>
+      <a href="http://dhygns.github.io/threejs-ink" class="pannel-portfolio">
+        <div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio03.gif">
+        <div class="pannel-img-right"></div>
+      </a>
+      <a href="http://dhygns.github.io/threejs-ink" class="pannel-portfolio">
+        <div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio04.gif">
+        <div class="pannel-img-right"></div>
+      </a>
+      <a href="http://dhygns.github.io/threejs-ink" class="pannel-portfolio">
+        <div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio05.gif">
+        <div class="pannel-img-right"></div>
+      </a>
+      <a href="http://dhygns.github.io/threejs-ink" class="pannel-portfolio">
+        <div class="pannel-img-right"></div><img class="pannel-img" src="./res/portfolio/portfolio06.gif">
+        <div class="pannel-img-right"></div>
+      </a>
+      <!-- <a href="javascript:examples.active('n3d-snoise');"> [threejs] Art Of Cells </a> -->
+      <!-- <a href="javascript:examples.active('3d-rayMarching');"> [threejs] ray Marching Metaball </a> -->
+      <!-- <a href="javascript:examples.active('3d-fft-cube');"> [threejs] fft noise cube </a> -->
+      <!-- <a href="javascript:examples.active('n3d-oilpaint');"> [threejs] Oil PAINT </a><br> -->
+      <!-- <a href="javascript:examples.active('n3d-cloude');"> CLOUDE </a><br> -->
+      <!-- <a href="javascript:examples.active('p5-fft0');"> [p5] FFT Visualizer0 </a>           -->
+      <!-- <a href="javascript:examples.active('p5-fft');"> [P5] FFT Visualizer </a><br> -->
+      <!-- <div class="pannel-board-demo" id="demos"> </div> -->
     </div>
+    <div class="pannel">
+      <div class="pannel-title"> Contact ME </div>
+      <!--GitHub_Logo  -->
+      <a href=" http://twitter.com/@dhygn1611"><img class="pannel-logo" src="./res/logos/TwitterLogo.png"></img></a>
+      <a href=" http://github.com/dhygns"><img class="pannel-logo" src="./res/logos/GitHub-Mark.png"></img></a><br> PH :
+      +8210-3891-1611 <br>
+    </div>
+  </div>
 
-    <script src="./scripts/utils/index.js"> </script>
-  </body>
+  <script src="./scripts/utils/index.js">
+
+  </script>
+</body>
+
 </html>
