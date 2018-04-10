@@ -16,6 +16,7 @@
   "author": "donghyeon kim",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "marked": "^0.3.19"
   }
 }
