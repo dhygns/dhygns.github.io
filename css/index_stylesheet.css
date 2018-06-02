@@ -11,99 +11,60 @@ body, html {
   height : 100%;
 }
 
-a {
-  margin : 0px;
-  white-space:nowrap;
-}
-
-#background-fixed {
-  position: fixed;
-  width : 100%;
-  height : 100%;
-}
-
-#background-image {
-  position: absolute;
-  visibility: hidden; 
-}
-
 #main {
-  color : #FFFFFF;
+  color : #FF0000;
   font-family: "Oswald", cursive;
   position: absolute;
   width : 100%;
   height : 100%;
 }
 
-.header {
-  position : relative;
-  width : 100%;
-  height : 100%;
-}
-
-.title {
+#Title {
+  color : #FFFFFF;
   position : absolute;
-  top : calc(50% - 20px);
+  display : block;
+  
+  width : 60vw;
+  height : 40vw;
 
-  font-size : 20px;
-  text-align: center;
-
-  width : 100%;
-  height : 100%;
+  left : calc(20vw);
+  top : calc(20vh);
 }
 
+#History {
 
-.pannel {
-  position : relative;
+  color : #FFFFFF;
+  position : absolute;
+  display : block;
+  
+  width : 20vw;
+  height : 20vw;
 
-
-  width : 100%;
-  max-width : 800px;
-
-  margin-top : 25%;
-  margin-bottom : 25%;
-  margin-left : auto;
-  margin-right : auto;
-
-  overflow :hidden;
+  left : calc(25vw - 10vw);
+  top : calc(80vh - 10vw);
 }
 
-.pannel-title {
-  position : relative;
-  font-size : 30px;
-  font-weight: bold;
-  margin :0px;
-  margin-bottom: 15px;
-  width : auto;
-  height : auto;
+#Projects {
+  color : #FFFFFF;
+  position : absolute;
+  display : block;
+
+  width : 20vw;
+  height : 20vw;
+
+  left : calc(50vw - 10vw);
+  top : calc(80vh - 10vw);
 }
 
-.pannel-board {  
-  /* background-color : #EEEEEE; */
-  margin: 0px;
-  width : 100%;
+#Experiments {
+  color : #FFFFFF;
+  position : absolute;
+  display : block;
+  
+  width : 20vw;
+  height : 20vw;
+
+  left : calc(75vw - 10vw);
+  top : calc(80vh - 10vw);
 }
 
-.pannel-board-demo {
-  width : 100%;
-  max-width : 800px;
-}
-
-.pannel-logo {
-  width : auto;
-  height : 32px;
-}
-
-.pannel-portfolio {
-
-  display : inline;
-}
-
-.pannel-img {
-  display : inline;
-}
-
-.pannel-img-right {
-  display : inline;
-  background-color: #CC99FF;
-}
