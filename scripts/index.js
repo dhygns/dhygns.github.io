@@ -9,18 +9,21 @@ class ButtonMesh extends THREE.Mesh {
             new THREE.ShaderMaterial({
                 transparent : true,
                 uniforms : {
+                    uTexture : { type : "t", value : null },
                     uPoint : { type : "2f", value : [0.5, 0.5]}
                 },
                 fragmentShader : `
+                uniform sampler2D uTexture;
                 uniform vec2 uPoint;
+
                 varying vec2 vTex;
 
                 void main()
                 {
 
                     vec2 point = vec2(uPoint.x, 1.0 - uPoint.y);
-                    vec2 posti = (uPoint - 0.5) * 3.141592 * 0.04;
-                    vec4 trans = vec4(vTex - 0.5, 0.95, 1.0);
+                    vec2 posti = (uPoint - 0.5) * 3.141592 * 0.7;
+                    vec4 trans = vec4(vTex - 0.5, 0.9, 1.0);
 
                     mat4 rotX;
                     rotX[0] = vec4(1.0, 0.0, 0.0, 0.0);
@@ -39,14 +42,14 @@ class ButtonMesh extends THREE.Mesh {
                     trans.y /= trans.z;
 
                     float alpha = 
-                    smoothstep( 0.35, 0.32, abs(trans.x)) *
-                    smoothstep( 0.35, 0.32, abs(trans.y));
+                    smoothstep( 0.51, 0.50, abs(trans.x)) *
+                    smoothstep( 0.51, 0.50, abs(trans.y));
 
-                    float shine = smoothstep(1.0, -1.0, length(vTex - point));
+                    float shine = smoothstep(1.7, -0.5, length(vTex - point));
+                    shine = shine * shine * shine * shine;
+                    vec4 col = texture2D(uTexture, trans.xy + 0.5);
 
-                    vec3 col = vec3(0.5);
-
-                    gl_FragColor = vec4(col + shine, alpha);
+                    gl_FragColor = vec4(col.rgb * shine, col.a * alpha + 0.1);
                 }
                 `,
                 vertexShader : `
@@ -67,17 +70,30 @@ class ButtonMesh extends THREE.Mesh {
 
 class ButtonRenderer extends THREE.WebGLRenderer
 {
-    constructor(domName)
+    constructor(domName, texturePath)
     {
         super();
         
+        this.texturePath = texturePath;
+
         this.dom = document.getElementById(domName);
+
+        //dom event
         this.dom.addEventListener("mousemove", this.onMouseMove.bind(this));
         this.dom.addEventListener("mouseleave", this.onMouseLeave.bind(this));
 
+        //window event
+        window.addEventListener("resize", this.onResize.bind(this)); 
+
         this.setSize(this.dom.offsetWidth, this.dom.offsetHeight);
         this.dom.appendChild(this.domElement);
+    }
 
+    setup()
+    {
+        THREE.ImageUtils.loadTexture(this.texturePath, {}, (tex)=>{
+            this.mesh.material.uniforms.uTexture.value = tex;
+        });
         this.targPoint = [0.5, 0.5];
         this.currPoint = [0.5, 0.5];
 
@@ -86,10 +102,6 @@ class ButtonRenderer extends THREE.WebGLRenderer
         this.scene = new THREE.Scene();
         
         this.scene.add(this.mesh);
-    }
-
-    setup()
-    {
         this.update(0, 0);
     }
 
@@ -103,6 +115,11 @@ class ButtonRenderer extends THREE.WebGLRenderer
     {
         this.targPoint[0] = 0.5;
         this.targPoint[1] = 0.5;
+    }
+
+    onResize()
+    {
+        this.setSize(this.dom.offsetWidth, this.dom.offsetHeight);
     }
 
     update(ot, nt)
@@ -122,9 +139,9 @@ class ButtonRenderer extends THREE.WebGLRenderer
 
 window.onload = ()=>{
 
-    var histRdrr = new ButtonRenderer("History");
-    var projRdrr = new ButtonRenderer("Projects");
-    var expeRdrr = new ButtonRenderer("Experiments");
+    var histRdrr = new ButtonRenderer("History", "res/imgs/History.png");
+    var projRdrr = new ButtonRenderer("Projects", "res/imgs/Projects.png");
+    var expeRdrr = new ButtonRenderer("Experiments", "res/imgs/Experiments.png");
 
     histRdrr.setup();
     projRdrr.setup();
