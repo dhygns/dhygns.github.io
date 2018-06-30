@@ -14,7 +14,6 @@ body, html {
 
 #main {
   color : #FF0000;
-  font-family: "Oswald", cursive;
   position: absolute;
   width : 100%;
   height : 100%;
@@ -46,7 +45,7 @@ iframe {
   top : 100px;
 }
 
-#History {
+#AboutMe {
 
   color : #FFFFFF;
   position : absolute;

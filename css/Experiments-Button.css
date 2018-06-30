@@ -14,8 +14,8 @@
     /*transform*/
     overflow:hidden;
 
-    margin-top:10px;
-    margin-bottom:5px;
+    margin-top:20px;
+    margin-bottom:0px;
     margin-left:5%;
 
     width:90%;
@@ -34,7 +34,6 @@
     background-color: #CCCCCC;
     box-shadow: 0 0px 0px 0 rgba(0,0,0,0.2), 0 0px 0px 0 rgba(0,0,0,0.19);
 }
-
 
 .ListButton span {
   cursor: pointer;
