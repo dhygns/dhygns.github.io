@@ -67,6 +67,11 @@ img {
     height : 50vw;
 }
 
+.imageWrapper:active {
+    overflow-y : scroll;
+    height : 50vw;
+}
+
 .imageWrapper::-webkit-scrollbar { 
     background-color: #CCCCCC;
     width: 10px; 

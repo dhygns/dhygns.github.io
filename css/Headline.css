@@ -1,6 +1,8 @@
 .HeadButton {
     color:#999999;
 
+    float : left;
+    
     display : block;
     height : 100%;
     width : 33.33vw;

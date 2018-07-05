@@ -58,7 +58,7 @@ iframe {
   top : calc(80vh - 10vw);
 }
 
-#Projects {
+#DevWiki {
   color : #FFFFFF;
   position : absolute;
   display : block;
@@ -70,7 +70,7 @@ iframe {
   top : calc(80vh - 10vw);
 }
 
-#Experiments {
+#Stuffs {
   color : #FFFFFF;
   position : absolute;
   display : block;

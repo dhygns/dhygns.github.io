@@ -140,8 +140,8 @@ class ButtonRenderer extends THREE.WebGLRenderer
 window.onload = ()=>{
 
     var histRdrr = new ButtonRenderer("AboutMe", "res/imgs/AboutMe.png");
-    var projRdrr = new ButtonRenderer("Projects", "res/imgs/Projects.png");
-    var expeRdrr = new ButtonRenderer("Experiments", "res/imgs/Experiments.png");
+    var projRdrr = new ButtonRenderer("DevWiki", "res/imgs/DevWiki.png");
+    var expeRdrr = new ButtonRenderer("Stuffs", "res/imgs/Stuffs.png");
 
     histRdrr.setup();
     projRdrr.setup();
