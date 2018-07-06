@@ -132,7 +132,7 @@ img {
 
     width : 30vw;
     height : 30vw;
-    background-image: url("./../res/imgs/AboutMe/Profile.JPG");
+    background-image: url("../res/imgs/AboutMe/Profile.JPG");
     background-size: 100% auto;
 }
 
