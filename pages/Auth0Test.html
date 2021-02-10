@@ -36,14 +36,12 @@
         </div>
         <script type="text/javascript">
             let auth0 = null;
-            console.log("updated0")
+            console.log("updated1")
             const configureClient = async () => {
                 console.log(createAuth0Client);
                 auth0 = await createAuth0Client({
-                    // domain:       'login.staging.spatial.is',
-                    // clientID:     'NvYycRYOkfzyhq5zH3xPJEgeGatSSG8R'
-                    domain:     'spatial-stg.auth0.com',
-                    clientID:   'ob7NMHB3tPkl838BKCxXwpn2ASFnANgs'
+                    domain: 'spatial-stg.auth0.com',
+                    client_id: 'ob7NMHB3tPkl838BKCxXwpn2ASFnANgs'
                 });
             };
 
@@ -100,8 +98,7 @@
 
             const login = async () => {
                 console.log(auth0);
-                await auth0.loginWithRedirect({
-                    redirect_uri: window.location.href
+                await auth0.loginWithPopup({
                 })
             };
 
