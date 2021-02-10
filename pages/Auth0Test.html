@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .hidden {
+                display: none;
+            }
+
+            label {
+                margin-bottom: 10px;
+                display: block;
+            }
+        </style>
+        <!-- <script src="https://cdn.auth0.com/js/auth0/9.14.3/auth0.min.js"></script> -->
+        <script src="https://cdn.auth0.com/js/auth0-spa-js/1.13/auth0-spa-js.production.js"></script>
+    </head>
+    
+    <body>
+        <h2>SPA Authentication Sample</h2>
+        <p>Welcome to our page!</p>
+        <button id="btn-login" disabled="true" onclick="login()">Log in</button>
+        <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
+        <div class="hidden" id="gated-content">
+            <p>
+                You're seeing this content because you're currently
+                <strong>logged in</strong>.
+            </p>
+            <label>
+                Access token:
+                <pre id="ipt-access-token"></pre>
+            </label>
+            <label>
+                User profile:
+                <pre id="ipt-user-profile"></pre>
+            </label>
+        </div>
+        <script type="text/javascript">
+
+            const configureClient = async () => {
+                auth0 = await createAuth0Client({
+                    domain: 'login.staging.spatial.is',
+                    client_id: 'NvYycRYOkfzyhq5zH3xPJEgeGatSSG8R'
+                });
+            };
+
+            window.onload = async () => {
+
+                await configureClient();
+                
+                updateUI();
+
+                const isAuthenticated = await auth0.isAuthenticated();
+
+                if (isAuthenticated) {
+                    // show the gated content
+                    return;
+                }
+
+                // NEW - check for the code and state parameters
+                console.log(window.location.search);
+                const query = window.location.search;
+                if (query.includes("code=") && query.includes("state=")) 
+                {
+                    // Process the login state
+                    await auth0.handleRedirectCallback();
+                    
+                    updateUI();
+
+                    // Use replaceState to redirect the user away and remove the querystring parameters
+                    window.history.replaceState({}, document.title, "/");
+                }
+            }
+
+            // NEW
+            const updateUI = async () => {
+                const isAuthenticated = await auth0.isAuthenticated();
+
+                document.getElementById("btn-logout").disabled = !isAuthenticated;
+                document.getElementById("btn-login").disabled = isAuthenticated;
+
+                if (isAuthenticated) {
+                    document.getElementById("gated-content").classList.remove("hidden");
+
+                    document.getElementById(
+                    "ipt-access-token"
+                    ).innerHTML = await auth0.getTokenSilently();
+
+                    document.getElementById("ipt-user-profile").textContent = JSON.stringify(
+                    await auth0.getUser()
+                    );
+
+                } else {
+                    document.getElementById("gated-content").classList.add("hidden");
+                }
+            };
+
+            const login = async () => {
+                console.log(window.location.origin);
+                await auth0.loginWithRedirect({
+                    redirect_uri: window.location.origin
+                });
+            };
+        // try
+        // {
+        //     window.onload = () => {
+        //         console.log("i");
+
+        //         const webAuth = new auth0.WebAuth({
+        //             domain:       'login.staging.spatial.is',
+        //             clientID:     'NvYycRYOkfzyhq5zH3xPJEgeGatSSG8R'
+        //         });
+        //         console.log(webAuth.authorize)
+        //         console.log(window.location.origin);
+        //         const credentials = webAuth.authorize({
+        //             scope: "openid profile email offline_access",
+        //             responseType: "token",
+        //             audience: "api.staging.spatial.is",
+        //             connection : "google-oauth2",
+        //             prompt: "select_account",
+        //         });
+        //     }
+            
+        // }
+        // catch(e) {
+        //     console.log(e.message);
+        // }
+
+        // function sendMessageToCSharp(message) {
+        //     window.vuplex.postMessage({ type: 'greeting', message });
+        // }
+        </script>
+    </body>
+</html>
