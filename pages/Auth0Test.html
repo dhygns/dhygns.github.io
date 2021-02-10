@@ -35,11 +35,15 @@
             </label>
         </div>
         <script type="text/javascript">
+            let auth0 = null;
 
             const configureClient = async () => {
+                console.log(createAuth0Client);
                 auth0 = await createAuth0Client({
-                    domain: 'login.staging.spatial.is',
-                    client_id: 'NvYycRYOkfzyhq5zH3xPJEgeGatSSG8R'
+                    // domain:       'login.staging.spatial.is',
+                    // clientID:     'NvYycRYOkfzyhq5zH3xPJEgeGatSSG8R'
+                    domain:     'spatial-stg.auth0.com',
+                    clientID:   'SdhsxzdNeDqIBUAavN4dyOxu43eMVJnQ'
                 });
             };
 
@@ -57,7 +61,7 @@
                 }
 
                 // NEW - check for the code and state parameters
-                console.log(window.location.search);
+                console.log(window.location);
                 const query = window.location.search;
                 if (query.includes("code=") && query.includes("state=")) 
                 {
@@ -95,39 +99,65 @@
             };
 
             const login = async () => {
-                console.log(window.location.origin);
+                console.log(auth0);
                 await auth0.loginWithRedirect({
-                    redirect_uri: window.location.origin
+                    redirect_uri: window.location.herf
+                })
+            };
+
+            const logout = () => {
+                auth0.logout({
+                    returnTo: window.location.origin
                 });
             };
-        // try
-        // {
-        //     window.onload = () => {
-        //         console.log("i");
-
-        //         const webAuth = new auth0.WebAuth({
-        //             domain:       'login.staging.spatial.is',
-        //             clientID:     'NvYycRYOkfzyhq5zH3xPJEgeGatSSG8R'
-        //         });
-        //         console.log(webAuth.authorize)
-        //         console.log(window.location.origin);
-        //         const credentials = webAuth.authorize({
-        //             scope: "openid profile email offline_access",
-        //             responseType: "token",
-        //             audience: "api.staging.spatial.is",
-        //             connection : "google-oauth2",
-        //             prompt: "select_account",
-        //         });
-        //     }
-            
-        // }
-        // catch(e) {
-        //     console.log(e.message);
-        // }
-
-        // function sendMessageToCSharp(message) {
-        //     window.vuplex.postMessage({ type: 'greeting', message });
-        // }
         </script>
+        <!-- <script type="text/javascript">
+            let webAuth = null;
+
+            try
+            {
+                window.onload = () => {
+                    console.log("i");
+    
+                    webAuth = new auth0.WebAuth({
+                        // domain:       'login.staging.spatial.is',
+                        // clientID:     'NvYycRYOkfzyhq5zH3xPJEgeGatSSG8R'
+                        domain:     'spatial-stg.auth0.com',
+                        clientID:   'ob7NMHB3tPkl838BKCxXwpn2ASFnANgs'
+                    });
+
+                    console.log(webAuth.authorize)
+                    console.log(window.location.origin);
+                    
+                    document.getElementById("btn-login").disabled = false;
+                }
+                
+            }
+            catch(e) {
+                console.log(e.message);
+            }
+            
+
+            const login = async () => {
+                const credentials = await webAuth.authorize({
+                    scope: "openid profile email offline_access",
+                    responseType: "token",
+                    audience: "api.staging.spatial.is",
+                    connection : "google-oauth2",
+                    prompt: "select_account",
+                    redirectUri: window.location.herf
+                });
+            };
+
+            const logout = () => {
+                auth0.logout({
+                    returnTo: window.location.herf
+                });
+            };
+    
+            function sendMessageToCSharp(message) {
+                window.vuplex.postMessage({ type: 'greeting', message });
+            }
+        </script> -->
     </body>
 </html>
