@@ -98,13 +98,14 @@
 
             const login = async () => {
                 console.log(auth0);
-                await auth0.loginWithPopup({
+                await auth0.loginWithRedirect({
+                    redirectUri: window.location.href
                 })
             };
 
             const logout = () => {
                 auth0.logout({
-                    returnTo: window.location.origin
+                    returnTo: window.location.href
                 });
             };
         </script>
