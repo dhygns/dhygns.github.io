@@ -92,7 +92,7 @@
                     var userInfo =  await auth0.getUser();
                     var token = await auth0.getTokenSilently();
 
-                    const response = await fetch("api.staging.spatial.is/api/external", {
+                    const response = await fetch("https://api.staging.spatial.is/api/external", {
                         headers : {
                             Authorization: `Bearer ${token}`
                         }
