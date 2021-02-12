@@ -17,6 +17,7 @@
     <body>
         <h2>SPA Authentication Sample</h2>
         <p>Welcome to our page!</p>
+        <span class='output-chrome'></span> 
         <button id="btn-login" disabled="true" onclick="login()">Log in</button>
         <button id="btn-logout" disabled="true" onclick="logout()">Log out</button>
         <div class="hidden" id="gated-content">
@@ -45,6 +46,7 @@
             };
 
             window.onload = async () => {
+                document.querySelector('.output-chrome').textContent = navigator.appVersion;
 
                 await configureClient();
                 
