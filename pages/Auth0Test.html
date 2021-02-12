@@ -36,12 +36,13 @@
         </div>
         <script type="text/javascript">
             let auth0 = null;
-            console.log("updated2")
+            
             const configureClient = async () => {
                 console.log(createAuth0Client);
                 auth0 = await createAuth0Client({
                     domain: 'spatial-stg.auth0.com',
-                    client_id: 'ob7NMHB3tPkl838BKCxXwpn2ASFnANgs'
+                    client_id: 'ob7NMHB3tPkl838BKCxXwpn2ASFnANgs',
+                    audience: 'login.staging.spatial.is'
                 });
             };
 
@@ -87,9 +88,20 @@
                     // document.getElementById(
                     // "ipt-access-token"
                     // ).innerHTML = await auth0.getTokenSilently();
-
+                    
                     var userInfo =  await auth0.getUser();
-                    userInfo.accessToken = await auth0.getTokenSilently();
+                    var token = await auth0.getTokenSilently();
+
+                    const response = await fetch("/api/external", {
+                        headers : {
+                            Authorization: `bearer ${token}`
+                        }
+                    });
+
+                    responseData = await response.json();
+
+                    document.getElementById("ipt-user-profile").textContent = JSON.stringify(responseData, {}, 2);
+                    //userInfo.accessToken = //await auth0.getTokenSilently();
 
                     var message = JSON.stringify(userInfo);
 
