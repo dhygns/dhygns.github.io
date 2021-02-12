@@ -87,8 +87,11 @@
                     // document.getElementById(
                     // "ipt-access-token"
                     // ).innerHTML = await auth0.getTokenSilently();
-                    
-                    var message = JSON.stringify(await auth0.getUser()) + " " + auth0.getTokenSilently();
+
+                    var userInfo =  await auth0.getUser();
+                    userInfo.accessToken = await auth0.getTokenSilently();
+
+                    var message = JSON.stringify(userInfo);
 
                     document.getElementById("ipt-user-profile").textContent = message;
 
