@@ -42,7 +42,7 @@
                 auth0 = await createAuth0Client({
                     domain: 'spatial-stg.auth0.com',
                     client_id: 'ob7NMHB3tPkl838BKCxXwpn2ASFnANgs',
-                    audience: 'login.staging.spatial.is'
+                    audience: 'api.staging.spatial.is'
                 });
             };
 
@@ -94,7 +94,7 @@
 
                     const response = await fetch("/api/external", {
                         headers : {
-                            Authorization: `bearer ${token}`
+                            Authorization: `Bearer ${token}`
                         }
                     });
 
