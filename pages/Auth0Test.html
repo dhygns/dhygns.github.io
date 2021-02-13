@@ -41,7 +41,8 @@
                 console.log(createAuth0Client);
                 auth0 = await createAuth0Client({
                     domain: 'spatial-stg.auth0.com',
-                    client_id: 'ob7NMHB3tPkl838BKCxXwpn2ASFnANgs'
+                    client_id: 'ob7NMHB3tPkl838BKCxXwpn2ASFnANgs',
+                    audience: 'api.staging.spatial.is'
                 });
             };
 
