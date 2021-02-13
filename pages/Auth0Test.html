@@ -94,7 +94,7 @@
 
                     var message = JSON.stringify(userInfo);
                     
-                    const response = await fetch("/oauth/token", {
+                    const response = await fetch("https://api.staging.spatial.is/oauth/token", {
                         headers: {
                             Authorization: `Bearer ${userInfo.accessToken}`
                         }
