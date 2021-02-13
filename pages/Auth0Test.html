@@ -93,9 +93,16 @@
                     userInfo.accessToken = await auth0.getTokenSilently();
 
                     var message = JSON.stringify(userInfo);
+                    
+                    const response = await fetch("/oauth/token", {
+                        headers: {
+                            Authorization: `Bearer ${userInfo.accessToken}`
+                        }
+                    })
+                    const responseData = await response.json();
 
-                    document.getElementById("ipt-user-profile").textContent = message;
-
+                    document.getElementById("ipt-user-profile").textContent = responseData;
+                    
                     if (window.vuplex)
                     {
                         sendMessageToCSharp(message);
