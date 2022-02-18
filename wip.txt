@@ -1,0 +1,316 @@
+
+    
+    <!-- About Section-->
+    <section className="page-section bg-primary text-white mb-0" id="about">
+        <div className="container">
+            <!-- About Section Heading-->
+            <h2 className="page-section-heading text-center text-uppercase text-white">About ME</h2>
+            <!-- Icon Divider-->
+            <div className="divider-custom divider-light">
+                <div className="divider-custom-line"></div>
+                <div className="divider-custom-line"></div>
+            </div>
+            <!-- About Section Content-->
+            <div className="row">
+                <div className="col-lg-4 ms-auto"><p className="lead">Currently working as a client engineer at Spatial.io as an early member of the company, and has been in charge of overall planning and development of the Spatial app.</p></div>
+                <div className="col-lg-4 me-auto"><p className="lead">It's a full-stack engineer who actively communicates with backend engineers using not only frontend engineering such as react / react native / unity / and shaders, but also project management using github and linear, and UI tools such as Retool. </p></div>
+            </div>
+            <!-- About Section Button-->
+            <div className="text-center mt-4">
+                <a className="btn btn-xl btn-outline-light" href="https://drive.google.com/uc?id=1PiM-BpU0Qw4dYN2NxXvC_P2ZrXf91xM-&export=download">
+                    <i className="fas fa-download me-2"></i>
+                    Download Resume.PDF
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section-->
+    <section className="page-section" id="contact">
+        <div className="container">
+            <!-- Contact Section Heading-->
+            <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+            <!-- Icon Divider-->
+            <div className="divider-custom">
+                <div className="divider-custom-line"></div>
+                <div className="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Form-->
+            <div className="row justify-content-center">
+                <div className="col-lg-8 col-xl-7">
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * SB Forms Contact Form * *-->
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- This form is pre-integrated with SB Forms.-->
+                    <!-- To make this form functional, sign up at-->
+                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                    <!-- to get an API token!-->
+                    <form id="contactForm" data-sb-form-api-token="ab8104b8-6524-4d26-84cb-25cbbd343480">
+                        <!-- Name input-->
+                        <div className="form-floating mb-3">
+                            <input className="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required" />
+                            <label for="name">Full name</label>
+                            <div className="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        </div>
+                        <!-- Email address input-->
+                        <div className="form-floating mb-3">
+                            <input className="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email" />
+                            <label for="email">Email address</label>
+                            <div className="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                            <div className="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        </div>
+                        <!-- Phone number input-->
+                        <div className="form-floating mb-3">
+                            <input className="form-control" id="phone" type="tel" placeholder="(123) 456-7890" data-sb-validations="required" />
+                            <label for="phone">Phone number</label>
+                            <div className="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
+                        </div>
+                        <!-- Message input-->
+                        <div className="form-floating mb-3">
+                            <textarea className="form-control" id="message" type="text" placeholder="Enter your message here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                            <label for="message">Message</label>
+                            <div className="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
+                        </div>
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        <div className="d-none" id="submitSuccessMessage">
+                            <div className="text-center mb-3">
+                                <div className="fw-bolder">successfully Sent!</div>
+                            </div>
+                        </div>
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div className="d-none" id="submitErrorMessage"><div className="text-center text-danger mb-3">Error sending message!</div></div>
+                        <!-- Submit Button-->
+                        <button className="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer className="footer text-center">
+        <div className="container">
+            <div className="row">
+                <!-- Footer Location-->
+                <div className="col-lg-4 mb-5 mb-lg-0">
+                    <h4 className="text-uppercase mb-4">Location</h4>
+                    <p className="lead mb-0">
+                        Woodbury, NY 11797
+                    </p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div className="col-lg-4 mb-5 mb-lg-0">
+                    <h4 className="text-uppercase mb-4">Around the Web</h4>
+                    <a className="btn btn-outline-light btn-social mx-1" href="#!"><i className="fab fa-fw fa-facebook-f"></i></a>
+                    <a className="btn btn-outline-light btn-social mx-1" href="#!"><i className="fab fa-fw fa-twitter"></i></a>
+                    <a className="btn btn-outline-light btn-social mx-1" href="#!"><i className="fab fa-fw fa-linkedin-in"></i></a>
+                    <a className="btn btn-outline-light btn-social mx-1" href="#!"><i className="fab fa-fw fa-dribbble"></i></a>
+                </div>
+                <!-- Footer About Text-->
+                <div className="col-lg-4">
+                    <h4 className="text-uppercase mb-4">About Me</h4>
+                    <p className="lead mb-0">
+                        Welcome any kind of contact, please don't hesitate to text me :)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright Section-->
+    <div className="copyright py-4 text-center text-white">
+        <div className="container"><small>Copyright &copy; dhygns.github.io 2022</small></div>
+    </div>
+    <!-- Portfolio Modals-->
+    <!-- Portfolio Modal 1-->
+    <div className="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true">
+        <div className="modal-dialog modal-xl">
+            <div className="modal-content">
+                <div className="modal-header border-0"><button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div className="modal-body text-center pb-5">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">Ambient mode on Samsung TV (2018 CES)</h2>
+                                <!-- Icon Divider-->
+                                <div className="divider-custom">
+                                    <div className="divider-custom-line"></div>
+                                    <div className="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image-->
+                                <img className="img-fluid rounded mb-5" src="assets/img/portfolio/ambient-mode.jpg" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                <p className="mb-4">Ambient Mode allows you to experience beauty right in your home. Customise your TV to showcase gorgeous wallpapers or bits of information when it is not in use.</p>
+                                <button className="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                                    <i className="fas fa-times fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio Modal 2-->
+    <div className="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true">
+        <div className="modal-dialog modal-xl">
+            <div className="modal-content">
+                <div className="modal-header border-0"><button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div className="modal-body text-center pb-5">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0"> Metaverse environment, Spatial </h2>
+                                <!-- Icon Divider-->
+                                <div className="divider-custom">
+                                    <div className="divider-custom-line"></div>
+                                    <div className="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image-->
+                                <img className="img-fluid rounded mb-5" src="assets/img/portfolio/AR-VR.jpg" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                <p className="mb-4">Spatial is dedicated to helping creators and brands build their own spaces in the metaverse to share culture together. We empower our users to leverage their beautiful spaces to share eye popping content, build a tight knit community, and drive meaningful sales of their creative works and products. We also empower our users to create beautiful and functional 3D spaces that they can mint as NFTs and sell/rent to others looking to host mind blowing experiences.  </p>
+                                <button className="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                                    <i className="fas fa-times fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio Modal 3-->
+    <div className="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true">
+        <div className="modal-dialog modal-xl">
+            <div className="modal-content">
+                <div className="modal-header border-0"><button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div className="modal-body text-center pb-5">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">Samsung Media Square</h2>
+                                <!-- Icon Divider-->
+                                <div className="divider-custom">
+                                    <div className="divider-custom-line"></div>
+                                    <div className="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image-->
+                                <img className="img-fluid rounded mb-5" src="assets/img/portfolio/MediaSquare_Video_Thumb.jpg" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                <p className="mb-4">MediaSquare is Samsung’s vision for how multiple people can share and experience media content in a connected environment, where smart phones and wearables can easily connect with TV. Through a playful and interactive game-like user interface, friends and family can enjoy and share a highly personalized media experience. Jinha Lee, a principal researcher and head of Interaction group talks about the MediaSquare vision, demonstrating different scenarios and the new design approach that brings such experience to life.</p>
+                                <button className="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                                    <i className="fas fa-times fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio Modal 4-->
+    <div className="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true">
+        <div className="modal-dialog modal-xl">
+            <div className="modal-content">
+                <div className="modal-header border-0"><button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div className="modal-body text-center pb-5">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">AR/VR experiences</h2>
+                                <!-- Icon Divider-->
+                                <div className="divider-custom">
+                                    <div className="divider-custom-line"></div>
+                                    <div className="divider-custom-icon"><i className="fas fa-star"></i></div>
+                                    <div className="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image-->
+                                <img className="img-fluid rounded mb-5" src="assets/img/portfolio/Experience.jpg" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                <p className="mb-4">Experience on AR / VR</p>
+                                <button className="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                                    <i className="fas fa-times fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio Modal 5-->
+    <div className="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true">
+        <div className="modal-dialog modal-xl">
+            <div className="modal-content">
+                <div className="modal-header border-0"><button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div className="modal-body text-center pb-5">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">Coding Education for Kids</h2>
+                                <!-- Icon Divider-->
+                                <div className="divider-custom">
+                                    <div className="divider-custom-line"></div>
+                                    <div className="divider-custom-icon"><i className="fas fa-star"></i></div>
+                                    <div className="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image-->
+                                <img className="img-fluid rounded mb-5" src="assets/img/portfolio/Coding Edu.jpg" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                <p className="mb-4">Coding Education (WIP)</p>
+                                <button className="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                                    <i className="fas fa-times fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio Modal 6-->
+    <div className="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true">
+        <div className="modal-dialog modal-xl">
+            <div className="modal-content">
+                <div className="modal-header border-0"><button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div className="modal-body text-center pb-5">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-8">
+                                <!-- Portfolio Modal - Title-->
+                                <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">Shader</h2>
+                                <!-- Icon Divider-->
+                                <div className="divider-custom">
+                                    <div className="divider-custom-line"></div>
+                                    <div className="divider-custom-icon"><i className="fas fa-star"></i></div>
+                                    <div className="divider-custom-line"></div>
+                                </div>
+                                <!-- Portfolio Modal - Image-->
+                                <img className="img-fluid rounded mb-5" src="assets/img/portfolio/Shader Test.PNG" alt="..." />
+                                <!-- Portfolio Modal - Text-->
+                                <p className="mb-4">Shader experiment with three.js / Unity shader / glsl / hlsl and so on</p>
+                                <button className="btn btn-primary" href="#!" data-bs-dismiss="modal">
+                                    <i className="fas fa-times fa-fw"></i>
+                                    Close Window
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
