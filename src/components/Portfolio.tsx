@@ -12,12 +12,24 @@ export const Portfolio = () => {
           <div className="divider-custom-line"></div>
         </div>
         <div className="row justify-content-center">
-          <PortfolioItem src="ambient-mode.jpg" />
-          <PortfolioItem src="AR-VR.jpg" />
-          <PortfolioItem src="MediaSquare_Video_Thumb.jpg" />
-          <PortfolioItem src="Experience.jpg" />
-          <PortfolioItem src="Coding Edu.jpg" />
-          <PortfolioItem src="Shader Test.PNG" />
+          <PortfolioItem
+            src={require("../assets/img/ambient-mode.jpg")}
+          />
+          <PortfolioItem
+            src={require("../assets/img/AR-VR.jpg")}
+          />
+          <PortfolioItem
+            src={require("../assets/img/MediaSquare_Video_Thumb.jpg")}
+          />
+          <PortfolioItem
+            src={require("../assets/img/Experience.jpg")}
+          />
+          <PortfolioItem
+            src={require("../assets/img/Coding Edu.jpg")}
+          />
+          <PortfolioItem
+            src={require("../assets/img/Shader Test.PNG")}
+          />
         </div>
       </div>
     </section>
