@@ -44,12 +44,13 @@ export const Contact = () => {
     );
   };
 
-  function* onClick() {
+  const onClick = () => {
+    console.log("ONCLICKED")
     const E = e("input, textarea, select", refForm.current);
-    const headers = new Headers({"Content-Type": "application/json"});
-    const body = JSON.stringify({token, submissionObject: u(E)});
-
-    yield fetch(`https://api.startbootstrap.com/api/latest/solution/forms`, {
+    const headers = new Headers({ "Content-Type": "application/json" });
+    const body = JSON.stringify({ token, submissionObject: u(E) });
+    console.log("HA");
+    fetch(`https://api.startbootstrap.com/api/latest/solution/forms`, {
       method: "POST",
       mode: "cors",
       cache: "no-cache",
@@ -58,7 +59,9 @@ export const Contact = () => {
       redirect: "follow",
       referrerPolicy: "no-referrer",
       body,
-    }).then(response => console.log(response.json()));
+    }).then((response) => {
+      console.log(response.json());
+    });
   }
 
   return (
@@ -152,7 +155,7 @@ export const Contact = () => {
                 className="btn btn-primary btn-xl"
                 id="submitButton"
                 type="submit"
-                onClick={onClick}
+                onClick={() => onClick()}
               >
                 Send
               </button>
