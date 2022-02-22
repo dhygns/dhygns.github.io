@@ -1,4 +1,5 @@
 import React from "react";
+import { Divider } from "./Divider";
 import { ContactInputField } from "./Contact/ContactInputField";
 
 const token = "ab8104b8-6524-4d26-84cb-25cbbd343480";
@@ -44,8 +45,8 @@ export const Contact = () => {
     );
   };
 
-  const onClick = (event : React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log("ONCLICKED")
+  const onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    console.log("ONCLICKED");
     const E = e("input, textarea, select", refForm.current);
     const headers = new Headers({ "Content-Type": "application/json" });
     const body = JSON.stringify({ token, submissionObject: u(E) });
@@ -62,8 +63,8 @@ export const Contact = () => {
     }).then((response) => {
       console.log(response.json());
     });
-    event.preventDefault()
-  }
+    event.preventDefault();
+  };
 
   return (
     <section className="page-section" id="contact">
@@ -71,10 +72,7 @@ export const Contact = () => {
         <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">
           Contact Me
         </h2>
-        <div className="divider-custom">
-          <div className="divider-custom-line"></div>
-          <div className="divider-custom-line"></div>
-        </div>
+        <Divider />
         <div className="row justify-content-center">
           <div className="col-lg-8 col-xl-7">
             <form

@@ -1,6 +1,8 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { BsXCircleFill } from "react-icons/bs";
+import { Divider } from "./../Divider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 export interface PortfolioModalProps {
   visible: boolean;
   onHide: any;
@@ -34,14 +36,12 @@ export const PortfolioModal = (props: PortfolioModalProps) => {
               <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">
                 {title}
               </h2>
-              <div className="divider-custom">
-                <div className="divider-custom-line"></div>
-                <div className="divider-custom-line"></div>
-              </div>
+              <Divider />
               <img className="img-fluid rounded mb-5" src={src} alt="..." />
               <p className="mb-4">{message}</p>
               <button className="btn btn-primary" onClick={onHide}>
-                <BsXCircleFill />close
+                <FontAwesomeIcon className="px-1" icon={faXmark} />
+                close
               </button>
             </div>
           </div>

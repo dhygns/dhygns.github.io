@@ -1,4 +1,5 @@
 import { PortfolioItem } from "./Portfolio/PortfolioItem";
+import { Divider } from "./Divider";
 
 export const Portfolio = () => {
   return (
@@ -7,10 +8,7 @@ export const Portfolio = () => {
         <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">
           Portfolio
         </h2>
-        <div className="divider-custom">
-          <div className="divider-custom-line"></div>
-          <div className="divider-custom-line"></div>
-        </div>
+        <Divider />
         <div className="row justify-content-center">
           <PortfolioItem
             src={require("../assets/img/ambient-mode.jpg")}

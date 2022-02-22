@@ -1,3 +1,4 @@
+import { Divider } from "./Divider";
 export const About = () => {
   return (
     <section className="page-section bg-primary text-white mb-0" id="about">
@@ -6,8 +7,7 @@ export const About = () => {
           About ME
         </h2>
         <div className="divider-custom divider-light">
-          <div className="divider-custom-line"></div>
-          <div className="divider-custom-line"></div>
+          <Divider />
         </div>
         <div className="row">
           <div className="col-lg-4 ms-auto">

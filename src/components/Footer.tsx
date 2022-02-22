@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebookSquare, faTwitterSquare, faLinkedinIn, faDribbbleSquare } from '@fortawesome/free-brands-svg-icons'
+
 export const Footer = () => {
   return (
     <footer className="footer text-center">
@@ -10,16 +13,16 @@ export const Footer = () => {
           <div className="col-lg-4 mb-5 mb-lg-0">
             <h4 className="text-uppercase mb-4">Around the Web</h4>
             <a className="btn btn-outline-light btn-social mx-1" href="#!">
-              <i className="fab fa-fw fa-facebook-f"></i>
+              <FontAwesomeIcon icon={faFacebookSquare}/>
             </a>
             <a className="btn btn-outline-light btn-social mx-1" href="#!">
-              <i className="fab fa-fw fa-twitter"></i>
+              <FontAwesomeIcon icon={faTwitterSquare}/>
             </a>
             <a className="btn btn-outline-light btn-social mx-1" href="#!">
-              <i className="fab fa-fw fa-linkedin-in"></i>
+              <FontAwesomeIcon icon={faLinkedinIn}/>
             </a>
             <a className="btn btn-outline-light btn-social mx-1" href="#!">
-              <i className="fab fa-fw fa-dribbble"></i>
+              <FontAwesomeIcon icon={faDribbbleSquare}/>
             </a>
           </div>
           <div className="col-lg-4">
