@@ -13,7 +13,7 @@ export const Header = () => {
           src="https://dhygns.github.io/interactive-traditional-art-paint/"
         />
         <p className="masthead-subheading font-weight-light mb-0">
-          AR/VR Engineer - Full Stack - Creative Coder
+          AR / VR and ... Metaverse Engineer
         </p>
       </div>
     </header>

@@ -1,20 +1,29 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-
+import { BsXCircleFill } from "react-icons/bs";
 export interface PortfolioModalProps {
   visible: boolean;
   onHide: any;
   src: string;
+  title: string;
+  message: string;
 }
 
 export interface PortfolioProps {
   src: string;
+  title: string;
+  message: string;
 }
 
 export const PortfolioModal = (props: PortfolioModalProps) => {
-  const { src, visible, onHide } = props;
+  const { src, visible, onHide, title, message } = props;
   return (
-    <Modal className="portfolio-modal fade" dialogClassName="modal-xl" show={visible} onHide={onHide}>
+    <Modal
+      className="portfolio-modal fade"
+      dialogClassName="modal-xl"
+      show={visible}
+      onHide={onHide}
+    >
       <div className="modal-header border-0">
         <button className="btn-close" onClick={onHide}></button>
       </div>
@@ -23,20 +32,16 @@ export const PortfolioModal = (props: PortfolioModalProps) => {
           <div className="row justify-content-center">
             <div className="col-lg-8">
               <h2 className="portfolio-modal-title text-secondary text-uppercase mb-0">
-                Ambient mode on Samsung TV (2018 CES)
+                {title}
               </h2>
               <div className="divider-custom">
                 <div className="divider-custom-line"></div>
                 <div className="divider-custom-line"></div>
               </div>
               <img className="img-fluid rounded mb-5" src={src} alt="..." />
-              <p className="mb-4">
-                Ambient Mode allows you to experience beauty right in your home.
-                Customise your TV to showcase gorgeous wallpapers or bits of
-                information when it is not in use.
-              </p>
+              <p className="mb-4">{message}</p>
               <button className="btn btn-primary" onClick={onHide}>
-                <i className="fas fa-times fa-fw">close</i>
+                <BsXCircleFill />close
               </button>
             </div>
           </div>
@@ -48,7 +53,7 @@ export const PortfolioModal = (props: PortfolioModalProps) => {
 
 export const PortfolioItem = (props: PortfolioProps) => {
   const [visible, setVisible] = React.useState(false);
-  const { src } = props;
+  const { src, title, message } = props;
   return (
     <div className="col-md-6 col-lg-4 mb-5">
       <div
@@ -66,6 +71,8 @@ export const PortfolioItem = (props: PortfolioProps) => {
       <PortfolioModal
         src={src}
         visible={visible}
+        title={title}
+        message={message}
         onHide={() => setVisible(false)}
       />
     </div>
