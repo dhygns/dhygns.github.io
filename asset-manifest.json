@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/dhygns.github.io/static/css/main.efa72f60.css",
+    "main.js": "/dhygns.github.io/static/js/main.0e33ea44.js",
+    "static/js/787.0908ef35.chunk.js": "/dhygns.github.io/static/js/787.0908ef35.chunk.js",
+    "static/media/Coding Edu.jpg": "/dhygns.github.io/static/media/Coding Edu.3a6adfd880d2694c0305.jpg",
+    "static/media/Profile Picture.jpg": "/dhygns.github.io/static/media/Profile Picture.041ac02b9e9a08922d54.jpg",
+    "static/media/Experience.jpg": "/dhygns.github.io/static/media/Experience.a3fb47574eb524de23e4.jpg",
+    "static/media/AR-VR.jpg": "/dhygns.github.io/static/media/AR-VR.07d44f1201a08d98df14.jpg",
+    "static/media/Shader Test.PNG": "/dhygns.github.io/static/media/Shader Test.77d21029eda552ae74e4.PNG",
+    "static/media/MediaSquare_Video_Thumb.jpg": "/dhygns.github.io/static/media/MediaSquare_Video_Thumb.d60ae1453f3945592016.jpg",
+    "static/media/ambient-mode.jpg": "/dhygns.github.io/static/media/ambient-mode.fe95a01079753ad02f91.jpg",
+    "index.html": "/dhygns.github.io/index.html",
+    "main.efa72f60.css.map": "/dhygns.github.io/static/css/main.efa72f60.css.map",
+    "main.0e33ea44.js.map": "/dhygns.github.io/static/js/main.0e33ea44.js.map",
+    "787.0908ef35.chunk.js.map": "/dhygns.github.io/static/js/787.0908ef35.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.efa72f60.css",
+    "static/js/main.0e33ea44.js"
+  ]
+}
