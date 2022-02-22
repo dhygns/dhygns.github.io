@@ -44,7 +44,7 @@ export const Contact = () => {
     );
   };
 
-  const onClick = () => {
+  const onClick = (event : React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     console.log("ONCLICKED")
     const E = e("input, textarea, select", refForm.current);
     const headers = new Headers({ "Content-Type": "application/json" });
@@ -62,6 +62,7 @@ export const Contact = () => {
     }).then((response) => {
       console.log(response.json());
     });
+    event.preventDefault()
   }
 
   return (
@@ -155,7 +156,7 @@ export const Contact = () => {
                 className="btn btn-primary btn-xl"
                 id="submitButton"
                 type="submit"
-                onClick={() => onClick()}
+                onClick={onClick}
               >
                 Send
               </button>
