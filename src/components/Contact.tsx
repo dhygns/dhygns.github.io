@@ -6,16 +6,15 @@ const token = "ab8104b8-6524-4d26-84cb-25cbbd343480";
 
 export const Contact = () => {
   const refForm = React.createRef<HTMLFormElement>();
+  const [result, setResult] = React.useState<boolean | undefined>();
+  const [isNameReady, setIsNameReady] = React.useState(false);
+  const [isEmailReady, setIsEmailReady] = React.useState(false);
+  const [isPhoneReady, setIsPhoneReady] = React.useState(false);
+  const [isMessageReady, setIsMessageReady] = React.useState(false);
 
   const e = (t: any, e: HTMLFormElement | null) => {
     const n = [].slice.call(e?.querySelectorAll(t));
     if (0 === n.length) throw new Error(`GET_ELEMENTS: ${e?.id} -> ${t}`);
-    return n;
-  };
-
-  const n = (t: any, e = document.body) => {
-    const n = e.querySelector(t);
-    if (!n) throw new Error(`GET_ELEMENT: ${e.id} -> ${t}`);
     return n;
   };
 
@@ -46,11 +45,9 @@ export const Contact = () => {
   };
 
   const onClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    console.log("ONCLICKED");
     const E = e("input, textarea, select", refForm.current);
     const headers = new Headers({ "Content-Type": "application/json" });
     const body = JSON.stringify({ token, submissionObject: u(E) });
-    console.log("HA");
     fetch(`https://api.startbootstrap.com/api/latest/solution/forms`, {
       method: "POST",
       mode: "cors",
@@ -60,8 +57,8 @@ export const Contact = () => {
       redirect: "follow",
       referrerPolicy: "no-referrer",
       body,
-    }).then((response) => {
-      console.log(response.json());
+    }).then((resp) => {
+      setResult(resp.ok);
     });
     event.preventDefault();
   };
@@ -83,78 +80,59 @@ export const Contact = () => {
               <ContactInputField
                 title="Full name"
                 id="name"
+                type="text"
                 placeholder="Enter your name..."
+                onReadyToSubmit={setIsNameReady}
               />
-              <div className="form-floating mb-3">
-                <input
-                  className="form-control"
-                  id="email"
-                  type="email"
-                  placeholder="name@example.com"
-                  data-sb-validations="required,email"
-                />
-                <label htmlFor="email">Email address</label>
-                <div
-                  className="invalid-feedback"
-                  data-sb-feedback="email:required"
-                >
-                  An email is required.
-                </div>
-                <div
-                  className="invalid-feedback"
-                  data-sb-feedback="email:email"
-                >
-                  Email is not valid.
-                </div>
-              </div>
-              <div className="form-floating mb-3">
-                <input
-                  className="form-control"
-                  id="phone"
-                  type="tel"
-                  placeholder="(123) 456-7890"
-                  data-sb-validations="required"
-                />
-                <label htmlFor="phone">Phone number</label>
-                <div
-                  className="invalid-feedback"
-                  data-sb-feedback="phone:required"
-                >
-                  A phone number is required.
-                </div>
-              </div>
-              <div className="form-floating mb-3">
-                <textarea
-                  className="form-control"
-                  id="message"
-                  // type="text"
-                  placeholder="Enter your message here..."
-                  style={{ height: "10rem" }}
-                  data-sb-validations="required"
-                ></textarea>
-                <label htmlFor="message">Message</label>
-                <div
-                  className="invalid-feedback"
-                  data-sb-feedback="message:required"
-                >
-                  A message is required.
-                </div>
-              </div>
-              <div className="d-none" id="submitSuccessMessage">
+              <ContactInputField
+                title="Email address"
+                id="email"
+                type="text"
+                placeholder="name@example.com"
+                onReadyToSubmit={setIsEmailReady}
+              />
+              <ContactInputField
+                title="Phone number"
+                id="phone"
+                type="tel"
+                placeholder="(123) 456-7890"
+                onReadyToSubmit={setIsPhoneReady}
+              />
+              <ContactInputField
+                title="Message"
+                id="message"
+                type="textarea"
+                style={{ height: "10rem" }}
+                placeholder="Enter your message here..."
+                onReadyToSubmit={setIsMessageReady}
+              />
+
+              <div className="d-block">
                 <div className="text-center mb-3">
-                  <div className="fw-bolder">successfully Sent!</div>
+                  {result !== undefined &&
+                    (result ? (
+                      <div className="fw-bolder text-success">
+                        Successfully Sent!
+                      </div>
+                    ) : (
+                      <div className="fw-bolder text-danger">
+                        Failed to send
+                      </div>
+                    ))}
                 </div>
               </div>
-              <div className="d-none" id="submitErrorMessage">
-                <div className="text-center text-danger mb-3">
-                  Error sending message!
-                </div>
-              </div>
+
               <button
                 className="btn btn-primary btn-xl"
                 id="submitButton"
                 type="submit"
                 onClick={onClick}
+                disabled={
+                  !isNameReady ||
+                  !isEmailReady ||
+                  !isPhoneReady ||
+                  !isMessageReady
+                }
               >
                 Send
               </button>

@@ -1,9 +1,30 @@
 import { Nav } from "react-bootstrap";
+import React from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+
+interface NavigatorButtonGroupProps {
+  visible : boolean,
+}
 
 interface NaviatorButtonProps {
   title : string,
   href : string
 }
+
+export const NavigatorButtonGroup = (props: NavigatorButtonGroupProps) => {
+  
+  const {visible} = props;
+  return (
+    <div className="collapse navbar-collapse" style={{display : visible ? "block" : "none"}}>
+      <ul className="navbar-nav ms-auto">
+        <NavigatorButton title="Portfolio" href="#portfolio" />
+        <NavigatorButton title="About" href="#about" />
+        <NavigatorButton title="Contact" href="#contact" />
+      </ul>
+    </div>
+  );
+};
 
 export const NavigatorButton = (props: NaviatorButtonProps) => {
   const { title, href} = props;
@@ -17,6 +38,10 @@ export const NavigatorButton = (props: NaviatorButtonProps) => {
 };
 
 export const Navigator = () => {
+  
+
+  const [menuOn, setMenuOn] = React.useState<boolean>(false);
+
   return (
     <Nav
       className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
@@ -29,22 +54,12 @@ export const Navigator = () => {
         <button
           className="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={() => setMenuOn(!menuOn)}
         >
           Menu
-          <i className="fas fa-bars"></i>
+          <FontAwesomeIcon className="px-1" icon={faBars}/>
         </button>
-        <div className="collapse navbar-collapse" id="navbarResponsive">
-          <ul className="navbar-nav ms-auto">
-            <NavigatorButton title="Portfolio" href="#portfolio"/>
-            <NavigatorButton title="About" href="#about"/>
-            <NavigatorButton title="Contact" href="#contact"/>
-          </ul>
-        </div>
+        <NavigatorButtonGroup visible={menuOn}></NavigatorButtonGroup>
       </div>
     </Nav>
   );
