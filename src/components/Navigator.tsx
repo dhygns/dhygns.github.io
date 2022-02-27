@@ -1,66 +1,72 @@
-import { Nav } from "react-bootstrap";
-import React from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-
-interface NavigatorButtonGroupProps {
-  visible : boolean,
-}
+import { NavItem, NavLink, Navbar, Container } from "react-bootstrap";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 interface NaviatorButtonProps {
-  title : string,
-  href : string
+  title: string;
+  href: string;
 }
 
-export const NavigatorButtonGroup = (props: NavigatorButtonGroupProps) => {
-  
-  const {visible} = props;
+export const NavButton = (props: NaviatorButtonProps) => {
+  const { title, href } = props;
   return (
-    <div className="collapse navbar-collapse" style={{display : visible ? "block" : "none"}}>
-      <ul className="navbar-nav ms-auto">
-        <NavigatorButton title="Portfolio" href="#portfolio" />
-        <NavigatorButton title="About" href="#about" />
-        <NavigatorButton title="Contact" href="#contact" />
-      </ul>
-    </div>
-  );
-};
-
-export const NavigatorButton = (props: NaviatorButtonProps) => {
-  const { title, href} = props;
-  return (
-    <li className="nav-item mx-0 mx-lg-1">
-      <a className="nav-link py-3 px-0 px-lg-3 rounded" href={href}>
+    <NavItem className="mx-0 mx-lg-1">
+      <NavLink color="white" className={"py-3 px-0 px-lg-3 rounded"} href={href}>
         {title}
-      </a>
-    </li>
+      </NavLink>
+    </NavItem>
   );
 };
 
 export const Navigator = () => {
-  
+  const [scrollPosition, setScrollPosition] = React.useState(0);
 
-  const [menuOn, setMenuOn] = React.useState<boolean>(false);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <Nav
-      className="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top"
+    <Navbar
+      expand="lg"
+      sticky="top"
+      bg="secondary"
+      variant="dark"
+      style={{ textTransform: "uppercase" }}
+      className={scrollPosition > 0.01 ? "navbar-shrink" : ""}
       id="mainNav"
     >
-      <div className="container">
-        <a className="navbar-brand" href="#page-top">
-          DH Kim
-        </a>
-        <button
-          className="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded"
+      <Container>
+        <Navbar.Brand href="#page-top">DH Kim</Navbar.Brand>
+        <Navbar.Toggle
+          className="text-uppercase font-weight-bold bg-primary text-white rounded"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
           type="button"
-          onClick={() => setMenuOn(!menuOn)}
         >
           Menu
-          <FontAwesomeIcon className="px-1" icon={faBars}/>
-        </button>
-        <NavigatorButtonGroup visible={menuOn}></NavigatorButtonGroup>
-      </div>
-    </Nav>
+          <FontAwesomeIcon className="px-1" icon={faBars} />
+        </Navbar.Toggle>
+        <Navbar.Collapse id="navbarResponsive">
+          <ul className="navbar-nav ms-auto">
+            <NavButton title="Portfolio" href="#portfolio" />
+            <NavButton title="About" href="#about" />
+            <NavButton title="Contact" href="#contact" />
+          </ul>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
