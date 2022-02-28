@@ -1,6 +1,7 @@
 import React from "react";
 import { Divider } from "./Divider";
 import { ContactInputField } from "./Contact/ContactInputField";
+import { Button, Container, Row, Col } from "react-bootstrap";
 
 const token = "ab8104b8-6524-4d26-84cb-25cbbd343480";
 
@@ -65,18 +66,14 @@ export const Contact = () => {
 
   return (
     <section className="page-section" id="contact">
-      <div className="container">
+      <Container>
         <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">
           Contact Me
         </h2>
         <Divider />
-        <div className="row justify-content-center">
-          <div className="col-lg-8 col-xl-7">
-            <form
-              ref={refForm}
-              id="contactForm"
-              data-sb-form-api-token="ab8104b8-6524-4d26-84cb-25cbbd343480"
-            >
+        <Row className="justify-content-center">
+          <Col lg="8" xl="7">
+            <form ref={refForm} id="contactForm">
               <ContactInputField
                 title="Full name"
                 id="name"
@@ -122,8 +119,9 @@ export const Contact = () => {
                 </div>
               </div>
 
-              <button
-                className="btn btn-primary btn-xl"
+              <Button
+                variant="primary"
+                size="lg"
                 id="submitButton"
                 type="submit"
                 onClick={onClick}
@@ -135,11 +133,11 @@ export const Contact = () => {
                 }
               >
                 Send
-              </button>
+              </Button>
             </form>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 };

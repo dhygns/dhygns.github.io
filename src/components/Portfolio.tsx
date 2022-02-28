@@ -1,23 +1,24 @@
 import { PortfolioItem } from "./Portfolio/PortfolioItem";
+import { Container, Row } from "react-bootstrap";
 import { Divider } from "./Divider";
 
 export const Portfolio = () => {
   return (
     <section className="page-section portfolio" id="portfolio">
-      <div className="container">
+      <Container>
         <h2 className="page-section-heading text-center text-uppercase text-secondary mb-0">
-          Portfolio
+          Portfolio (WIP)
         </h2>
         <Divider />
-        <div className="row justify-content-center">
+        <Row className="justify-content-center">
           <PortfolioItem
             src={require("../assets/img/ambient-mode.jpg")}
-            title="Ambient mode on Samsung TV (2018 CES)"
+            title="Ambient mode of Samsung TV"
             message="Ambient Mode allows you to experience beauty right in your home. Customise your TV to showcase gorgeous wallpapers or bits of information when it is not in use."
           />
           <PortfolioItem
             src={require("../assets/img/AR-VR.jpg")}
-            title=" Metaverse environment, Spatial "
+            title="Spatial, Metaverse environment"
             message="Spatial is dedicated to helping creators and brands build their own spaces in the metaverse to share culture together. We empower our users to leverage their beautiful spaces to share eye popping content, build a tight knit community, and drive meaningful sales of their creative works and products. We also empower our users to create beautiful and functional 3D spaces that they can mint as NFTs and sell/rent to others looking to host mind blowing experiences."
           />
           <PortfolioItem
@@ -40,8 +41,8 @@ export const Portfolio = () => {
             title="Shader"
             message="Shader experiment with three.js / Unity shader / glsl / hlsl and so on"
           />
-        </div>
-      </div>
+        </Row>
+      </Container>
     </section>
   );
 };

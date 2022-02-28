@@ -6,7 +6,7 @@ export interface ContactInputFieldProps {
   type: string;
   style?: any;
   placeholder: string | undefined;
-  onReadyToSubmit: (e : boolean) => void
+  onReadyToSubmit: (e: boolean) => void;
 }
 
 export const ContactInputField = (props: ContactInputFieldProps) => {
@@ -17,7 +17,7 @@ export const ContactInputField = (props: ContactInputFieldProps) => {
   const onTextChanged = (e: any) => {
     setText(e.target.value);
     onReadyToSubmit(e.target.value.length > 0);
-  }
+  };
 
   return (
     <div

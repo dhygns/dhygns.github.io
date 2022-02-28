@@ -12,7 +12,11 @@ export const NavButton = (props: NaviatorButtonProps) => {
   const { title, href } = props;
   return (
     <NavItem className="mx-0 mx-lg-1">
-      <NavLink color="white" className={"py-3 px-0 px-lg-3 rounded"} href={href}>
+      <NavLink
+        color="white"
+        className={"py-3 px-0 px-lg-3 rounded"}
+        href={href}
+      >
         {title}
       </NavLink>
     </NavItem>
@@ -41,14 +45,19 @@ export const Navigator = () => {
       sticky="top"
       bg="secondary"
       variant="dark"
-      style={{ textTransform: "uppercase" }}
       className={scrollPosition > 0.01 ? "navbar-shrink" : ""}
       id="mainNav"
     >
       <Container>
-        <Navbar.Brand href="#page-top">DH Kim</Navbar.Brand>
+        <Navbar.Brand href="#page-top">DH Kim, Metaverse Engineer</Navbar.Brand>
         <Navbar.Toggle
-          className="text-uppercase font-weight-bold bg-primary text-white rounded"
+          className="bg-primary text-white"
+          color="primary"
+          style={{
+            textTransform: "uppercase",
+            fontWeight: "bold",
+            borderRadius: "0.5rem",
+          }}
           data-bs-toggle="collapse"
           data-bs-target="#navbarResponsive"
           aria-controls="navbarResponsive"

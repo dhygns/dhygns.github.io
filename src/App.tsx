@@ -1,4 +1,5 @@
 import "./App.scss";
+import { Container } from "react-bootstrap";
 
 import { Navigator } from "./components/Navigator";
 import { Header } from "./components/Header";
@@ -6,6 +7,7 @@ import { Portfolio } from "./components/Portfolio";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { Notification } from "./components/Notification";
 
 function App() {
   return (
@@ -17,11 +19,13 @@ function App() {
       <Contact></Contact>
       <Footer></Footer>
       <div className="copyright py-4 text-center text-white">
-        <div className="container">
+        <Container>
           <small>Copyright &copy; dhygns.github.io 2022</small>
-        </div>
+        </Container>
       </div>
+      <Notification></Notification>
     </div>
+
   );
 }
 
