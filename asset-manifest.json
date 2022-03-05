@@ -1,22 +1,31 @@
 {
   "files": {
-    "main.css": "/static/css/main.df15df2b.css",
-    "main.js": "/static/js/main.14588570.js",
+    "main.css": "/static/css/main.50537ba0.css",
+    "main.js": "/static/js/main.adc8efd9.js",
     "static/js/787.0908ef35.chunk.js": "/static/js/787.0908ef35.chunk.js",
-    "static/media/Coding Edu.jpg": "/static/media/Coding Edu.3a6adfd880d2694c0305.jpg",
+    "static/media/outdoor.png": "/static/media/outdoor.dcc54629197f0bafcea3.png",
     "static/media/Profile Picture.jpg": "/static/media/Profile Picture.041ac02b9e9a08922d54.jpg",
-    "static/media/Experience.jpg": "/static/media/Experience.a3fb47574eb524de23e4.jpg",
-    "static/media/AR-VR.jpg": "/static/media/AR-VR.07d44f1201a08d98df14.jpg",
+    "static/media/media-square-snapshot3.PNG": "/static/media/media-square-snapshot3.699bd49d1719f0adf655.PNG",
+    "static/media/air-quality-visualizer-award.PNG": "/static/media/air-quality-visualizer-award.2010648c17101a8d2c0a.PNG",
+    "static/media/article1.png": "/static/media/article1.a70cbac686059b468abe.png",
+    "static/media/thumbnail.jpg": "/static/media/thumbnail.fe95a01079753ad02f91.jpg",
+    "static/media/air-quality-visualizer-website.PNG": "/static/media/air-quality-visualizer-website.191c58f372530d496ad9.PNG",
+    "static/media/media-square-snapshot.PNG": "/static/media/media-square-snapshot.5d4c7db4501e0714fb51.PNG",
+    "static/media/media-square-phone.PNG": "/static/media/media-square-phone.4fdb3567338d52b03bad.PNG",
+    "static/media/media-square-snapshot2.PNG": "/static/media/media-square-snapshot2.1c0b2d54993bce03691f.PNG",
+    "static/media/article2.png": "/static/media/article2.84c7f8eae87d982c63b8.png",
     "static/media/Shader Test.PNG": "/static/media/Shader Test.77d21029eda552ae74e4.PNG",
-    "static/media/MediaSquare_Video_Thumb.jpg": "/static/media/MediaSquare_Video_Thumb.d60ae1453f3945592016.jpg",
-    "static/media/ambient-mode.jpg": "/static/media/ambient-mode.fe95a01079753ad02f91.jpg",
+    "static/media/spatial-patent.PNG": "/static/media/spatial-patent.1e3c3774a3c86c973ea2.PNG",
+    "static/media/article3.png": "/static/media/article3.f1a38f98d2d4004ee8c2.png",
+    "static/media/patent.PNG": "/static/media/patent.d7f7047c4b8230e43b93.PNG",
+    "static/media/air-quality-visualizer-patent.PNG": "/static/media/air-quality-visualizer-patent.024b15ae5161e62cf4c2.PNG",
     "index.html": "/index.html",
-    "main.df15df2b.css.map": "/static/css/main.df15df2b.css.map",
-    "main.14588570.js.map": "/static/js/main.14588570.js.map",
+    "main.50537ba0.css.map": "/static/css/main.50537ba0.css.map",
+    "main.adc8efd9.js.map": "/static/js/main.adc8efd9.js.map",
     "787.0908ef35.chunk.js.map": "/static/js/787.0908ef35.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.df15df2b.css",
-    "static/js/main.14588570.js"
+    "static/css/main.50537ba0.css",
+    "static/js/main.adc8efd9.js"
   ]
 }
