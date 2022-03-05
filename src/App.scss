@@ -1,15 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon:400');
 
 $body-bg: #626D71;
 $body-color: #CDCDC0;
 $primary: #DDBC95;
 $secondary: #B38867;
 
-$font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-sans-serif: "Do Hyeon", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 #mainNav {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Do Hyeon", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: 700;
 }
 
@@ -72,6 +73,10 @@ $font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", 
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.5em;
   }
+}
+
+.lead {
+  white-space: pre-wrap;
 }
 
 .navbar {

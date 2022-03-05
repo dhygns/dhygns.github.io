@@ -2,8 +2,8 @@ import "./App.scss";
 import { Container } from "react-bootstrap";
 
 import { Navigator } from "./components/Navigator";
-import { Header } from "./components/Header";
-import { Portfolio } from "./components/Portfolio";
+import { Header } from "./components/Header/Header";
+import { Portfolio } from "./components/Portfolio/Portfolio";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";

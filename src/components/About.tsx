@@ -8,23 +8,45 @@ export const About = () => {
     <section className="page-section bg-primary text-white mb-0" id="about">
       <Container>
         <h2 className="page-section-heading text-center text-uppercase text-white">
-          About ME (WIP)
+          About ME
         </h2>
         <Divider className="divider-custom divider-light" />
         <Row>
           <Col lg="4" className="ms-auto">
-            <p className="lead">
-              Currently working as a client engineer at Spatial.io as an early
-              member of the company, and has been in charge of overall planning
-              and development of the Spatial app.
+            <p className="lead mb-1 text-secondary">교육</p>
+            <p className="lead mb-3">
+              한국산업기술대학교
+              <br />
+              삼성 소프트웨어 멤버십
+              <br />
+              모두의 연구소
+              <br />
+            </p>
+            <p className="lead mb-1 text-secondary">경력</p>
+            <p className="lead mb-3">
+              삼성전자 (2015. 01 ~ 2018. 02)
+              <br />- Expert programmer
+              <br />
+              Spatial (2018. 02 ~ present)
+              <br />- Client prgrammer
+              <br />
             </p>
           </Col>
           <Col lg="4" className="me-auto">
-            <p className="lead">
-              I'm a full-stack engineer who actively communicates with backend
-              engineers using not only frontend engineering such as react /
-              react native / unity / and shaders, but also project management
-              using github and linear, and UI tools such as Retool.{" "}
+            <p className="lead mb-1 text-secondary">스킬</p>
+            <p className="lead mb-3">
+              C#, C++, C, Javascript, Typescript ...
+              <br />
+              Unity3D, React, ReactNative ... <br />
+              Various Shader languages ... <br />
+              Github, Linear.app, Fork ... <br />
+              Azure Devops <br/>
+              Arduino
+            </p>
+            <p className="lead mb-1 text-secondary">플랫폼</p>
+            <p className="lead mb-3">
+              Hololens 1, Hololens 2, Magic Leap, Nreal ... <br />
+              Oculus 1, Oculus 2, range of PC VR ... <br/>
             </p>
           </Col>
         </Row>

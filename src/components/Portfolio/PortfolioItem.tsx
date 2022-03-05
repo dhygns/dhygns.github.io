@@ -4,31 +4,26 @@ import {
   Row,
   Container,
   Button,
-  Image,
   CloseButton,
   Col,
-  Card
+  Card,
 } from "react-bootstrap";
+import AwesomeSlider from "react-awesome-slider";
 import { Divider } from "./../Divider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
+import "react-awesome-slider/dist/styles.css";
 
 export interface PortfolioModalProps {
   visible: boolean;
   onHide: any;
-  src: string;
-  title: string;
-  message: string;
-}
-
-export interface PortfolioProps {
-  src: string;
+  srcUrls: string[];
   title: string;
   message: string;
 }
 
 export const PortfolioModal = (props: PortfolioModalProps) => {
-  const { src, visible, onHide, title, message } = props;
+  const { srcUrls, visible, onHide, title, message } = props;
   return (
     <Modal
       className="portfolio-modal fade"
@@ -47,11 +42,13 @@ export const PortfolioModal = (props: PortfolioModalProps) => {
                 {title}
               </h2>
               <Divider />
-              <Image
-                fluid={true}
-                className="rounded mb-5"
-                src={src}
-                alt="..."
+              <AwesomeSlider 
+              className="mb-5"
+                media={
+                  srcUrls.map<{ source: string }>((source) => {
+                    return { source };
+                  }) ?? []
+                }
               />
               <p className="mb-4 text-black">{message}</p>
               <Button variant="primary" onClick={onHide}>
@@ -66,9 +63,17 @@ export const PortfolioModal = (props: PortfolioModalProps) => {
   );
 };
 
+export interface PortfolioProps {
+  thumbnailSrc: string;
+  srcUrls: string[];
+  title: string;
+  message: string;
+}
+
 export const PortfolioItem = (props: PortfolioProps) => {
   const [visible, setVisible] = React.useState(false);
-  const { src, title, message } = props;
+  const { thumbnailSrc, srcUrls, title, message } = props;
+
   return (
     <Col md="6" lg="4" className="mb-5">
       <div
@@ -82,10 +87,10 @@ export const PortfolioItem = (props: PortfolioProps) => {
             <FontAwesomeIcon className="px-1" icon={faPlus} size="3x" />
           </div>
         </div>
-        <img className="portfolio-image" src={src} alt="..." />
+        <img className="portfolio-image" src={thumbnailSrc} alt="..." />
       </div>
       <PortfolioModal
-        src={src}
+        srcUrls={srcUrls}
         visible={visible}
         title={title}
         message={message}

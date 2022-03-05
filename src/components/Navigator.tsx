@@ -65,12 +65,11 @@ export const Navigator = () => {
           aria-label="Toggle navigation"
           type="button"
         >
-          Menu
-          <FontAwesomeIcon className="px-1" icon={faBars} />
+          MENU <FontAwesomeIcon className="px-1" icon={faBars} />
         </Navbar.Toggle>
         <Navbar.Collapse id="navbarResponsive">
           <ul className="navbar-nav ms-auto">
-            <NavButton title="Portfolio" href="#portfolio" />
+            <NavButton title="Projects" href="#portfolio" />
             <NavButton title="About" href="#about" />
             <NavButton title="Contact" href="#contact" />
           </ul>
