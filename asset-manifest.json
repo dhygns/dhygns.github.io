@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.50537ba0.css",
-    "main.js": "/static/js/main.adc8efd9.js",
+    "main.js": "/static/js/main.1fc3bb52.js",
     "static/js/787.0908ef35.chunk.js": "/static/js/787.0908ef35.chunk.js",
     "static/media/outdoor.png": "/static/media/outdoor.dcc54629197f0bafcea3.png",
     "static/media/Profile Picture.jpg": "/static/media/Profile Picture.041ac02b9e9a08922d54.jpg",
@@ -21,11 +21,11 @@
     "static/media/air-quality-visualizer-patent.PNG": "/static/media/air-quality-visualizer-patent.024b15ae5161e62cf4c2.PNG",
     "index.html": "/index.html",
     "main.50537ba0.css.map": "/static/css/main.50537ba0.css.map",
-    "main.adc8efd9.js.map": "/static/js/main.adc8efd9.js.map",
+    "main.1fc3bb52.js.map": "/static/js/main.1fc3bb52.js.map",
     "787.0908ef35.chunk.js.map": "/static/js/787.0908ef35.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.50537ba0.css",
-    "static/js/main.adc8efd9.js"
+    "static/js/main.1fc3bb52.js"
   ]
 }
