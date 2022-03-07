@@ -7,12 +7,28 @@ import {
   CloseButton,
   Col,
   Card,
+  Image
 } from "react-bootstrap";
 import AwesomeSlider from "react-awesome-slider";
 import { Divider } from "./../Divider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
 import "react-awesome-slider/dist/styles.css";
+
+
+export interface PortfolioModalContentProps { 
+  src: string,
+  type: "image" | "video",
+}
+
+export const PortfolioModalContent = (props: PortfolioModalContentProps) => {
+  const {src} = props;
+  return (
+  <div className="h-100 w-100">
+    <Button className="h-100 w-100">
+    </Button>
+  </div>)
+}
 
 export interface PortfolioModalProps {
   visible: boolean;
@@ -22,14 +38,28 @@ export interface PortfolioModalProps {
   message: string;
 }
 
+export interface ContentModalProps {
+  visible: boolean;
+  targetSrc: string;
+}
+
 export const PortfolioModal = (props: PortfolioModalProps) => {
+  const [ contentModal, setContentModal ] = React.useState<ContentModalProps>({visible: false, targetSrc: ""});
   const { srcUrls, visible, onHide, title, message } = props;
+
+  const onContentModalHide = () => {
+    setContentModal({targetSrc:"", visible: false});
+  };
+
   return (
     <Modal
       className="portfolio-modal fade"
       dialogClassName="modal-xl"
       show={visible}
-      onHide={onHide}
+      onHide={() => {
+        onHide();
+        onContentModalHide();
+      }}
     >
       <Modal.Header className="border-0">
         <CloseButton onClick={onHide}></CloseButton>
@@ -42,14 +72,20 @@ export const PortfolioModal = (props: PortfolioModalProps) => {
                 {title}
               </h2>
               <Divider />
-              <AwesomeSlider 
-              className="mb-5"
-                media={
-                  srcUrls.map<{ source: string }>((source) => {
-                    return { source };
-                  }) ?? []
-                }
-              />
+              <AwesomeSlider className="mb-5">
+                {srcUrls.map((src, idx) => (
+                  <div className="h-100 w-100">
+                    <Button className="h-100 w-100 m-0 p-0" onClick={() => {
+                      setContentModal({
+                        visible: true,
+                        targetSrc: src
+                      })
+                    }} >
+                      <Image className="h-100" src={src} />
+                    </Button>
+                  </div>
+                ))}
+              </AwesomeSlider>
               <p className="mb-4 text-black">{message}</p>
               <Button variant="primary" onClick={onHide}>
                 <FontAwesomeIcon className="px-1" icon={faXmark} />
@@ -59,9 +95,19 @@ export const PortfolioModal = (props: PortfolioModalProps) => {
           </Row>
         </Container>
       </Modal.Body>
+      <Modal
+        className="fade"
+        dialogClassName="modal-xl"
+        show={contentModal.visible}
+        onHide={onContentModalHide}>
+        <Modal.Header className="border-0">
+          <CloseButton onClick={onContentModalHide}></CloseButton>
+        </Modal.Header>
+        <Image src={contentModal.targetSrc}></Image>
+      </Modal>
     </Modal>
   );
-};
+}
 
 export interface PortfolioProps {
   thumbnailSrc: string;
