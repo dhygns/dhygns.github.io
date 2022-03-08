@@ -1,4 +1,4 @@
-import {
+import THREE, {
 	Color,
 	MeshDepthMaterial,
 	NearestFilter,
@@ -6,7 +6,10 @@ import {
 	RGBADepthPacking,
 	ShaderMaterial,
 	UniformsUtils,
-	WebGLRenderTarget
+	WebGLRenderTarget,
+	OneFactor,
+	SrcAlphaFactor,
+	CustomBlending
 } from 'three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { BokehShader } from './BokehShader.js';
@@ -74,6 +77,9 @@ class BokehPass extends Pass {
 			fragmentShader: bokehShader.fragmentShader,
 			transparent: true
 		} );
+        this.materialBokeh.blending = CustomBlending;
+		this.materialBokeh.blendSrc = SrcAlphaFactor;
+		this.materialBokeh.blendDst = SrcAlphaFactor;
 
 		this.uniforms = bokehUniforms;
 		this.needsSwap = false;

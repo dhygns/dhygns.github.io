@@ -78,7 +78,7 @@
 
 			float viewZ = getViewZ( getDepth( vUv ) );
 
-			float factor = (farClip - nearClip) * ( focus + viewZ ); // viewZ is <= 0, so this is a difference equation
+			float factor = ( focus + viewZ ); // viewZ is <= 0, so this is a difference equation
 
 			vec2 dofblur = vec2 ( clamp( factor * aperture, -maxblur, maxblur ) );
 

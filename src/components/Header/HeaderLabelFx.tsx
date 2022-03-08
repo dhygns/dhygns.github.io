@@ -11,12 +11,19 @@ import {
   DirectionalLight,
   ColorRepresentation,
   MeshStandardMaterial,
+  Fog,
   RGBAFormat,
-  AmbientLight
+  AmbientLight,
+  MeshPhongMaterial,
+  Color,
+  BoxGeometry
 }  from "three";
 import { BokehPass } from "./Fx/BokehPass";
 import { GUI } from "dat.gui";
 
+
+const primaryColor = 0xDDBC95;
+const secondaryColor = 0xB38867;
 
 const DEFAULT_WIDTH_SIZE: number = 800;
 const DEFAULT_HEIGHT_SIZE: number = 600;
@@ -28,12 +35,15 @@ export class HeaderLabelObject extends Object3D {
   constructor(scale: number, position: Vector3) {
     super();
 
-    this.mesh = new Mesh(new SphereGeometry(2.0, 50), new MeshStandardMaterial({
-      color:0xDDBC95,
-      metalness:0.466,
-      roughness:0.3,
-      fog: true
-    }));
+    this.mesh = new Mesh(
+      new BoxGeometry(1, 5, 1),
+      new MeshPhongMaterial({
+        color: 0xddbc95,
+        shininess: 0.466,
+        specular: 0x383838,
+        fog: true,
+      })
+    );
 
     this.add(this.mesh);
     this.position.set(position.x, position.y, position.z);
@@ -51,7 +61,7 @@ export class HeaderLabelDirectionalLight extends DirectionalLight {
   {
     super(color);
     this.rotation.set(-40, 30, 0);
-    this.position.set(100, 200, 50);
+    this.position.set(100, 700, 350);
   }
 }
 
@@ -63,7 +73,7 @@ export class HeaderLabelAmbientLight extends AmbientLight {
 
 export class HeaderLabelScene extends Scene {
   private gui? : GUI;
-  private fxController = { focus: 0.1, aperture: 0.1, maxblur: 1 };
+  private fxController = { focus: 750, aperture: 4.9, maxblur: 1 };
 
   private dofPass: BokehPass | null = null;
   private camera?: PerspectiveCamera;
@@ -71,11 +81,13 @@ export class HeaderLabelScene extends Scene {
 
   constructor() {
     super();
+    this.fog = new Fog(primaryColor, 0.1, 2500);
+    this.background = new Color(primaryColor);
     this.camera = new PerspectiveCamera(
-      15,
+      90,
       DEFAULT_WIDTH_SIZE / DEFAULT_HEIGHT_SIZE,
       0.1,
-      100
+      3000
     );
     this.camera.rotation.x = 0;
     this.camera.position.y = 1;
@@ -92,7 +104,7 @@ export class HeaderLabelScene extends Scene {
     this.targetTexture.samples = 4;
 
     this.gui = new GUI();
-    this.gui.add(this.fxController, 'focus', 0.1, 200.0, 0.1).onChange(this.updateUniforms.bind(this));
+    this.gui.add(this.fxController, 'focus', 0.1, 3000.0, 0.1).onChange(this.updateUniforms.bind(this));
     this.gui.add(this.fxController, 'aperture', 0, 10, 0.1).onChange(this.updateUniforms.bind(this));
     this.gui.add(this.fxController, 'maxblur', 0.0, 1., 0.001).onChange(this.updateUniforms.bind(this));
     this.gui.close();
@@ -110,8 +122,8 @@ export class HeaderLabelScene extends Scene {
 
   public update(t:number, dt: number) {
 
-    this.camera?.position.set(0, 0, 0);
-    this.camera?.lookAt(new Vector3(0, 0, -1000));
+    this.camera?.position.set(740 * Math.sin(t * 0.0002), 200, 740 * Math.cos(t * 0.0002));
+    this.camera?.lookAt(new Vector3(0, 0, 0));
     this.camera?.updateMatrixWorld();
 
     this.children.forEach((obj: THREE.Object3D, idx: number) => {
@@ -122,7 +134,7 @@ export class HeaderLabelScene extends Scene {
   }
 
   public render(renderer: THREE.WebGLRenderer) {
-		renderer.setClearColor( 0xDDBC95 );
+		renderer.setClearColor( primaryColor );
 		renderer.setClearAlpha( 0.0 );
     renderer.setRenderTarget(this.targetTexture!);
     renderer.clear();
@@ -155,9 +167,14 @@ export default class HeaderLabelFx {
     this.scene = new HeaderLabelScene();
     this.scene.add(
       new HeaderLabelDirectionalLight(0xFFFFFF),
-      new HeaderLabelAmbientLight(0xB38867),
-      new HeaderLabelObject(0.05, new Vector3(0, 0, -5)),
-      new HeaderLabelObject(0.2, new Vector3(-3, 0, -95))
+      new HeaderLabelAmbientLight(secondaryColor),
+      new HeaderLabelObject(100, new Vector3(0, 50, 500)),
+      new HeaderLabelObject(50, new Vector3(-800, 25, 400)),
+      new HeaderLabelObject(80, new Vector3(600, 40, 0)),
+      new HeaderLabelObject(100, new Vector3(-600, 50, 0)),
+      new HeaderLabelObject(120, new Vector3(-100, 60, -200)),
+      new HeaderLabelObject(80, new Vector3(200, 40, -400)),
+      new HeaderLabelObject(50, new Vector3(-500, 25, -800))
     );
   }
 
