@@ -4,8 +4,10 @@ import {
   faGithubSquare,
   faInstagramSquare,
   faLinkedinIn,
-  faDribbbleSquare,
 } from "@fortawesome/free-brands-svg-icons";
+import {
+  faCube
+} from "@fortawesome/free-solid-svg-icons"
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 export interface FooterSocialButtonProps {
@@ -51,7 +53,7 @@ export const Footer = () => {
               href="https://www.linkedin.com/in/donghyeon-kim-20a336145/"
               icon={faLinkedinIn}
             />
-            <FooterSocialButton href="#!" icon={faDribbbleSquare} />
+            <FooterSocialButton href="https://programmers.co.kr/pr/dhygns_5227" icon={faCube} />
           </Col>
           <Col lg="4">
             <h4 className="text-uppercase mb-4">Hi! 안녕하세요!</h4>
