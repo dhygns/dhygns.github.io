@@ -1,8 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.a2919109.css",
-    "main.js": "/static/js/main.3850eafd.js",
+    "main.js": "/static/js/main.53670787.js",
     "static/js/787.0908ef35.chunk.js": "/static/js/787.0908ef35.chunk.js",
+    "static/media/dh_avatar.glb": "/static/media/dh_avatar.f62fa89082ae491c82cb.glb",
     "static/media/outdoor.png": "/static/media/outdoor.dcc54629197f0bafcea3.png",
     "static/media/Profile Picture.jpg": "/static/media/Profile Picture.041ac02b9e9a08922d54.jpg",
     "static/media/media-square-snapshot3.PNG": "/static/media/media-square-snapshot3.699bd49d1719f0adf655.PNG",
@@ -21,11 +22,11 @@
     "static/media/air-quality-visualizer-patent.PNG": "/static/media/air-quality-visualizer-patent.024b15ae5161e62cf4c2.PNG",
     "index.html": "/index.html",
     "main.a2919109.css.map": "/static/css/main.a2919109.css.map",
-    "main.3850eafd.js.map": "/static/js/main.3850eafd.js.map",
+    "main.53670787.js.map": "/static/js/main.53670787.js.map",
     "787.0908ef35.chunk.js.map": "/static/js/787.0908ef35.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2919109.css",
-    "static/js/main.3850eafd.js"
+    "static/js/main.53670787.js"
   ]
 }
