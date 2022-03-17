@@ -7,17 +7,17 @@ import {
   WebGLRenderTarget,
   Vector2,
   LinearFilter,
-  SphereGeometry,
   DirectionalLight,
   ColorRepresentation,
-  MeshStandardMaterial,
   Fog,
   RGBAFormat,
   AmbientLight,
   MeshPhongMaterial,
   Color,
-  BoxGeometry
+  BoxGeometry,
+  Bone
 }  from "three";
+import { GLTF, GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js"
 import { BokehPass } from "./Fx/BokehPass";
 import { GUI } from "dat.gui";
 
@@ -73,11 +73,13 @@ export class HeaderLabelAmbientLight extends AmbientLight {
 
 export class HeaderLabelScene extends Scene {
   private gui? : GUI;
-  private fxController = { focus: 750, aperture: 4.9, maxblur: 1 };
+  private fxController = { focus: 250, aperture: 4.9, maxblur: 1 };
 
   private dofPass: BokehPass | null = null;
   private camera?: PerspectiveCamera;
   private targetTexture?: WebGLRenderTarget;
+  
+  private avatar: Object3D | undefined;
 
   constructor() {
     super();
@@ -89,9 +91,7 @@ export class HeaderLabelScene extends Scene {
       0.1,
       3000
     );
-    this.camera.rotation.x = 0;
-    this.camera.position.y = 1;
-    this.camera.position.z = 5;
+    this.camera.position.set(300, 300, 740);
 
     this.dofPass = new BokehPass(this, this.camera!, {});
     this.dofPass.renderToScreen = true;
@@ -111,6 +111,12 @@ export class HeaderLabelScene extends Scene {
     this.updateUniforms();
   }
 
+  public setAvatar(avatar : Object3D)
+  {
+    this.avatar = avatar;
+    this.add(avatar);
+  }
+
   private updateUniforms() {
     if (this.dofPass)
     {
@@ -120,16 +126,37 @@ export class HeaderLabelScene extends Scene {
     }
   }
 
-  public update(t:number, dt: number) {
+  public setMousePosition(x:number, y:number)
+  {
+    if (this.camera && this.avatar)
+    {
+      this.camera.position.set(300 + x * 0.25, 300 + y * 0.25, 740);
+      this.findBone(this.avatar, "Head")?.lookAt(this.camera.position);
+    }
+  }
 
-    this.camera?.position.set(740 * Math.sin(t * 0.0002), 200, 740 * Math.cos(t * 0.0002));
+  public findBone(root : Object3D<THREE.Event>, name : string)
+  {
+    const q = [root];
+    let node : Object3D<THREE.Event> | undefined;
+    while(q.length > 0)
+    {
+      node = q.shift();
+      if (node && node.name === name)
+        return node;
+      if(node) 
+        node.children.forEach(obj => q.push(obj))
+    }
+    return undefined;
+  }
+
+  public update(t:number, dt: number) {
     this.camera?.lookAt(new Vector3(0, 0, 0));
     this.camera?.updateMatrixWorld();
 
     this.children.forEach((obj: THREE.Object3D, idx: number) => {
-      let hlo = (obj as HeaderLabelObject);
-      if(obj.type !== "DirectionalLight" && obj.type !== "AmbientLight")
-        hlo?.update(t, dt);
+      if(obj instanceof HeaderLabelObject)
+        (obj as HeaderLabelObject)?.update(t, dt);
     });
   }
 
@@ -148,7 +175,6 @@ export class HeaderLabelScene extends Scene {
     this.camera!.updateProjectionMatrix();
   }
 }
-
 export default class HeaderLabelFx {
   private renderer: THREE.WebGLRenderer | null = null;
 
@@ -161,6 +187,31 @@ export default class HeaderLabelFx {
 
     this.setup();
     this.update();
+  }
+  
+  private onMouseMove(event : MouseEvent) {
+    if (this.renderer && this.scene)
+    {
+      this.scene.setMousePosition(event.offsetX - this.renderer.domElement.width * 0.5, event.offsetY - this.renderer.domElement.height * 0.5);
+    }
+  }
+
+  private onLoad(gltf : GLTF) {
+    gltf.scene.children.forEach(obj => {
+      if (obj instanceof Object3D)
+      {
+        console.log(obj as Object3D);
+        obj.scale.x = 500;
+        obj.scale.y = 500;
+        obj.scale.z = 500;
+
+        obj.position.y = -600;
+        obj.position.x = 400;
+        obj.position.z = 400;
+
+        this.scene?.setAvatar(obj as Object3D)
+      }
+    });
   }
 
   private setup() {
@@ -176,6 +227,11 @@ export default class HeaderLabelFx {
       new HeaderLabelObject(80, new Vector3(200, 40, -400)),
       new HeaderLabelObject(50, new Vector3(-500, 25, -800))
     );
+    
+    const loader = new GLTFLoader();
+    loader.load(require("assets/model/dh_avatar.glb"), this.onLoad.bind(this), undefined, error => console.error);
+    
+    this.renderer?.domElement.addEventListener("mousemove", this.onMouseMove.bind(this));
   }
 
   private update(ot?:any, nt?:any) {

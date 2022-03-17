@@ -17,6 +17,7 @@ export const HeaderNameLabel = () => {
       setSize(divRef?.current?.clientWidth ?? 0)
     }
     window.addEventListener("resize", handleResize);
+    
     return () => window.removeEventListener('resize', handleResize);
   }, [divRef, canvasRef]);
 
