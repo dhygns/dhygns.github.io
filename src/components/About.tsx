@@ -54,7 +54,7 @@ export const About = () => {
           <Button
             variant="outline-light"
             size="lg"
-            href="https://drive.google.com/uc?id=1PiM-BpU0Qw4dYN2NxXvC_P2ZrXf91xM-&export=download"
+            href="https://drive.google.com/uc?id=1YteWTNVEiSaHNueaC0WKkEwCPZ4WLt93&export=download"
           >
             <FontAwesomeIcon className="me-2" icon={faDownload} />
             Download Resume.PDF
