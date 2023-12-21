@@ -5,8 +5,10 @@
 layout: home
 ---
 
+
 # **Donghyeon Kim:** A Pioneer in Graphics Engineering with a Flair for Technological Integration
 
+<img src="../../assets/images/profile.png" width="50%">
 ## Exploring New Frontiers through Diverse System Integration
 
 Donghyeon Kim, with his extensive experience in graphics engineering, has demonstrated exceptional ability in integrating and optimizing complex systems. His expertise transcends the boundaries of various platforms and technologies, focusing on delivering creative and innovative solutions.
