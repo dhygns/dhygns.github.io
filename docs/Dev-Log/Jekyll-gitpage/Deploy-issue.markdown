@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Deploy-issue
-parent: Project-Portfolio
+parent: Jekyll-GitPage
 grand_parent: Dev-Log
 nav_order: 1
 ---
