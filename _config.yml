@@ -24,7 +24,6 @@ description: >- # this means to ignore newlines until "baseurl:"
  Welcome to the professional realm of Donghyeon Kim, a Graphics Engineer who excels in the integration of advanced technology and diverse experiences. Donghyeon's journey in graphics engineering is marked by a relentless pursuit of innovation and problem-solving. Here, you'll explore a world where technical prowess meets practical application, showcasing a portfolio that spans various aspects of graphics engineering and digital innovation
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
 github_username:  dhygns
 
 # Build settings
@@ -32,6 +31,11 @@ theme: just-the-docs
 plugins:
   - jekyll-feed
 
+# Aux links for the upper right navigation
+aux_links:
+  "dhygns.github.io on GitHub":
+    - "https://github.com/dhygns/dhygns.github.io"
+    
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
