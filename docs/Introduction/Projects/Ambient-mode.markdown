@@ -10,6 +10,9 @@ permalink: /introduction/projects/ambient-mode
 ## **Ambient Mode**
 2018 Samsung First Look Event
 
+<img src="../../assets/images/ambient-mode-1.png" width="250"> <img src="../../assets/images/ambient-mode-2.jpg" width="340">
+<img src="../../assets/images/ambient-mode-3.jpg" width="595">
+
 <br>
 #### **Activities**
 - TED : [A holographic meeting platform for collaborating from anywhere](https://www.ted.com/talks/jinha_lee_a_holographic_meeting_platform_for_collaborating_from_anywhere)

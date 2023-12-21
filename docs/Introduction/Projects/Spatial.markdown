@@ -10,6 +10,10 @@ permalink: /introduction/projects/spatial
 ## **Spatial**
 product of spatial system
 
+
+<img src="../../assets/images/spatial-1.png" width="505">
+<img src="../../assets/images/spatial-2.png" width="250"> <img src="../../assets/images/spatial-3.png" width="250">
+
 <br>
 #### **Activities**
 - TED : [A holographic meeting platform for collaborating from anywhere](https://www.ted.com/talks/jinha_lee_a_holographic_meeting_platform_for_collaborating_from_anywhere)

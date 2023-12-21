@@ -10,6 +10,8 @@ permalink: /introduction/projects/media-square
 ## **Media Square**
 CES2016
 
+<img src="../../assets/images/media-square.png" width="505">
+
 <br>
 #### **Detail of Project**
 >This is a TV-based next-generation smart hub view created to connect Samsung's SmartThing more effectively. MediaSquare proposes a way for multiple people to share and experience media content in a visible environment so that smartphones and wearable devices can easily connect to TVs. In addition to simple interactivity, the game-like user interface allows friends and family to enjoy and share highly personalized media experiences.
