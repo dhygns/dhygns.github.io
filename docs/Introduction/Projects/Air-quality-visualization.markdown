@@ -10,6 +10,7 @@ permalink: /introduction/projects/air-quality-visualization
 ## **Air Quality Visualization**
 iF DESIGN AWARD 2018
 
+<img src="../../assets/images/air-quality-visualization-1.png" width="350"> <img src="../../assets/images/air-quality-visualization-2.png" width="210">
 
 <br>
 #### **Detail of Project (From website)**
