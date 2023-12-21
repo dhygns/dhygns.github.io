@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  Welcome to Jekyll!
-parent: Wiki
+parent: Dev-Log
 date:   2023-12-18 22:16:42 +0900
 categories: jekyll update
 ---

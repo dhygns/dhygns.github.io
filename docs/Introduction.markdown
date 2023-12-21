@@ -6,8 +6,6 @@ has_children: true
 permalink: /introduction/
 ---
 
-![](../../assets/images/profile.jpg)
-
 # **DONGHYEON KIM**
 ---------------------------
 
