@@ -1,6 +1,8 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
+title: "Welcome to Donghyeon's portfolio"
 ---
+
+# Welcome to Donghyeon's portfolio
+
+This is the homepage of Donghyeon's portfolio.
