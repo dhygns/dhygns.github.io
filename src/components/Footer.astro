@@ -1,0 +1,27 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-32 border-t" style="border-color: var(--color-border)">
+  <div
+    class="container-x flex flex-col gap-6 py-10 text-sm md:flex-row md:items-center md:justify-between"
+  >
+    <div class="font-mono text-xs" style="color: var(--color-text-2)">
+      © {year} Donghyeon Kim — built with Astro + R3F
+    </div>
+
+    <nav class="flex flex-wrap gap-x-6 gap-y-2 font-mono text-xs">
+      <a href="mailto:dhygns@gmail.com">dhygns@gmail.com</a>
+      <a
+        href="https://github.com/dhygns"
+        target="_blank"
+        rel="noopener noreferrer">github</a
+      >
+      <a
+        href="https://uxkim.notion.site"
+        target="_blank"
+        rel="noopener noreferrer">notion</a
+      >
+    </nav>
+  </div>
+</footer>

@@ -1,0 +1,57 @@
+---
+import Base from "~/layouts/Base.astro";
+import { press } from "~/data/press";
+---
+
+<Base
+  title="Press — Donghyeon Kim"
+  description="Press coverage: Reuters / VC News Network, MarketWatch."
+>
+  <section class="container-x pt-32 pb-12">
+    <p class="t-meta mb-3">[ press ]</p>
+    <h1 class="t-h1 max-w-3xl" style="color: var(--color-text-0)">
+      Things written about the work.
+    </h1>
+  </section>
+
+  <section class="container-x pb-32">
+    <ul class="space-y-6">
+      {
+        press.map((p) => (
+          <li>
+            <a
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block rounded-2xl border p-8 transition-colors"
+              style="border-color: var(--color-border); background: var(--color-bg-1);"
+            >
+              <p class="t-meta mb-3">
+                {p.publication} · {p.date}
+              </p>
+              <h2
+                class="text-xl font-semibold leading-snug transition-colors group-hover:[color:var(--color-brand-500)]"
+                style="color: var(--color-text-0)"
+              >
+                {p.title}
+              </h2>
+              <p
+                class="mt-4 text-sm leading-relaxed"
+                style="color: var(--color-text-1)"
+              >
+                {p.excerpt}
+              </p>
+              <p
+                class="mt-4 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider"
+                style="color: var(--color-text-2)"
+              >
+                Read on {new URL(p.href).hostname.replace(/^www\./, "")}
+                <span aria-hidden="true">↗</span>
+              </p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

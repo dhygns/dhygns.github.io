@@ -1,0 +1,67 @@
+---
+import Base from "~/layouts/Base.astro";
+import { skills } from "~/data/skills";
+---
+
+<Base
+  title="Skills — Donghyeon Kim"
+  description="Core / Proficient / Additional. Unity 3D, Vulkan, GLSL/HLSL, real-time graphics."
+>
+  <section class="container-x pt-32 pb-12">
+    <p class="t-meta mb-3">[ skills ]</p>
+    <h1 class="t-h1 max-w-3xl" style="color: var(--color-text-0)">
+      Tools, in the order I reach for them.
+    </h1>
+  </section>
+
+  <section class="container-x pb-32">
+    <div class="space-y-20">
+      {
+        skills.map((tier, idx) => (
+          <div>
+            <div class="mb-8 flex items-end gap-4">
+              <span
+                class="font-mono text-xs"
+                style="color: var(--color-brand-500)"
+              >
+                {String(idx + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h2 class="t-h2" style="color: var(--color-text-0)">
+                  {tier.name}
+                </h2>
+                <p
+                  class="mt-1 text-sm"
+                  style="color: var(--color-text-1)"
+                >
+                  {tier.blurb}
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="grid grid-cols-1 gap-x-10 gap-y-6 border-t pt-8 md:grid-cols-2 lg:grid-cols-3"
+              style="border-color: var(--color-border)"
+            >
+              {tier.groups.map((g) => (
+                <div>
+                  <p class="t-meta mb-3">{g.label}</p>
+                  <ul class="flex flex-wrap gap-1.5">
+                    {g.items.map((item) => (
+                      <li
+                        class="rounded-md border px-2 py-1 font-mono text-xs"
+                        style="border-color: var(--color-border); color: var(--color-text-0);"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Base>

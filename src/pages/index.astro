@@ -1,0 +1,250 @@
+---
+import Base from "~/layouts/Base.astro";
+import HeroCanvas from "~/components/Hero/HeroCanvas.tsx";
+import { getCollection } from "astro:content";
+
+const now = {
+  company: "Wooster Games",
+  role: "Lead Software Developer",
+  since: "Jun 2025",
+  location: "Brooklyn, NY",
+  href: "/experience",
+};
+
+// Pull top-3 projects from the collection so the home cards stay in sync with
+// /projects automatically. No more hardcoded blurbs that drift over time.
+const selected = (await getCollection("projects"))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
+
+const stripItems = [
+  "iF Award 2024",
+  "iF Award 2018",
+  "Stellantis Venture Awards",
+  "Samsung SW Expert",
+  "3 patents",
+];
+---
+
+<Base>
+  {/* ───────────── Hero ───────────── */}
+  <section
+    class="relative min-h-[100svh] overflow-hidden"
+    style="background: var(--color-bg-0)"
+  >
+    {/* Server-rendered placeholder shows instantly; HeroCanvas hydrates on
+        browser idle and mounts the shader when ready. Kept very dark so it
+        doesn't flash before the shader appears. */}
+    <div
+      aria-hidden="true"
+      class="absolute inset-0"
+      style="background: radial-gradient(ellipse at 50% 65%, #1a0e08 0%, #0a0608 35%, #0a0a0b 75%);"
+    >
+    </div>
+    <HeroCanvas client:idle />
+
+    <div class="container-x relative z-10 flex min-h-[100svh] flex-col justify-end pt-32 pb-20">
+      <p class="t-meta mb-6">
+        [ Super Prototyper · System Integrator ]
+      </p>
+
+      <h1 class="t-display max-w-5xl" style="color: var(--color-text-0)">
+        Real-time graphics for
+        <span class="brand-underline">screens that don't exist yet</span>.
+      </h1>
+
+      <p
+        class="mt-8 max-w-2xl text-lg leading-relaxed"
+        style="color: var(--color-text-1)"
+      >
+        I'm Donghyeon Kim — a graphics engineer building custom rendering
+        pipelines in Unity 3D, with native plugins in Vulkan, DirectX 11, and
+        OpenGL. Lately: AR Head-Up Displays for automotive OEMs and a
+        live-service VR title.
+      </p>
+
+      <div class="mt-12 flex flex-wrap items-center gap-4">
+        <a
+          href="/projects"
+          class="group inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm transition-colors"
+          style="background: var(--color-brand-500); color: var(--color-bg-0); font-weight: 600;"
+        >
+          View projects
+          <span aria-hidden="true" class="transition-transform group-hover:translate-x-0.5">→</span>
+        </a>
+        <a
+          href="/log"
+          class="inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-mono"
+          style="border-color: var(--color-border); color: var(--color-text-1);"
+        >
+          Read log
+        </a>
+      </div>
+    </div>
+
+    {/* gradient bottom fade so hero blends into next section */}
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-32"
+      style="background: linear-gradient(to bottom, transparent, var(--color-bg-0));"
+    >
+    </div>
+  </section>
+
+  {/* ───────────── Now ───────────── */}
+  <section class="container-x py-20 reveal">
+    <p class="t-meta mb-3">[ now ]</p>
+    <a href={now.href} class="group block">
+      <h2 class="t-h2" style="color: var(--color-text-0)">
+        {now.role} at
+        <span style="color: var(--color-brand-500)">{now.company}</span>
+      </h2>
+      <p
+        class="mt-2 font-mono text-xs"
+        style="color: var(--color-text-2)"
+      >
+        {now.since} — Present · {now.location}
+      </p>
+    </a>
+  </section>
+
+  {/* ───────────── Selected work ───────────── */}
+  <section class="container-x py-20 reveal">
+    <div class="mb-10 flex items-end justify-between">
+      <div>
+        <p class="t-meta mb-3">[ selected work ]</p>
+        <h2 class="t-h1" style="color: var(--color-text-0)">Recent projects</h2>
+      </div>
+      <a
+        href="/projects"
+        class="font-mono text-xs uppercase tracking-wider"
+        style="color: var(--color-text-1)"
+      >
+        See all →
+      </a>
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-3">
+      {
+        selected.map((p) => {
+          const d = p.data;
+          const subtitle = `${d.company} · ${d.period}`;
+          return (
+            <a
+              href={`/projects/${p.slug}`}
+              class="project-card group relative flex h-full flex-col overflow-hidden rounded-2xl border"
+              style="border-color: var(--color-border); background: var(--color-bg-1);"
+            >
+              {/* Cover image (16:10) — desaturated + gradient overlay so text on top stays legible */}
+              <div class="relative aspect-[16/10] w-full overflow-hidden">
+                {d.cover ? (
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-[1.04]"
+                    style={`background-image: url(${d.cover}); filter: grayscale(0.45) saturate(0.85) brightness(0.85);`}
+                  />
+                ) : (
+                  // Placeholder for projects without an image yet — soft gradient
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-0"
+                    style={`background: radial-gradient(ellipse at 60% 40%, ${d.accent}33 0%, var(--color-bg-2) 60%, var(--color-bg-1) 100%);`}
+                  />
+                )}
+                {/* Gradient bottom fade so the body text sits cleanly */}
+                <div
+                  aria-hidden="true"
+                  class="absolute inset-x-0 bottom-0 h-2/3"
+                  style="background: linear-gradient(to bottom, transparent, var(--color-bg-1));"
+                />
+                {/* Accent glow — opacity bumps on hover */}
+                <div
+                  aria-hidden="true"
+                  class="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full opacity-30 blur-3xl transition-opacity duration-500 group-hover:opacity-70"
+                  style={`background: ${d.accent};`}
+                />
+              </div>
+
+              {/* Body */}
+              <div class="relative flex flex-1 flex-col justify-between p-6 pt-4">
+                <div>
+                  <p class="t-meta mb-2">{subtitle}</p>
+                  <h3
+                    class="mb-2 text-xl font-semibold leading-tight transition-colors group-hover:[color:var(--color-brand-500)]"
+                    style="color: var(--color-text-0)"
+                  >
+                    {d.title}
+                  </h3>
+                  <p
+                    class="text-sm leading-relaxed"
+                    style="color: var(--color-text-1)"
+                  >
+                    {d.summary}
+                  </p>
+                </div>
+
+                {/* Tags + arrow row, pushed to bottom for consistent card height */}
+                <div class="mt-5 flex items-end justify-between gap-3">
+                  <ul class="flex flex-wrap gap-1">
+                    {d.tags.slice(0, 3).map((tag) => (
+                      <li
+                        class="rounded-md border px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider"
+                        style="border-color: var(--color-border); color: var(--color-text-2);"
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                  <span
+                    aria-hidden="true"
+                    class="font-mono text-base leading-none transition-transform duration-300 group-hover:translate-x-0.5"
+                    style="color: var(--color-text-1)"
+                  >
+                    →
+                  </span>
+                </div>
+              </div>
+            </a>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <style>
+    /* Selected-work cards: hover lift + brand border. */
+    .project-card {
+      transition:
+        transform var(--dur-md) var(--ease-out-expo),
+        border-color var(--dur-md) var(--ease-out-expo);
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-brand-500);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .project-card,
+      .project-card:hover {
+        transform: none;
+        transition: border-color var(--dur-sm) linear;
+      }
+    }
+  </style>
+
+  {/* ───────────── Awards / patents strip ───────────── */}
+  <section class="container-x py-20 reveal">
+    <p class="t-meta mb-6">[ recognition ]</p>
+    <ul class="flex flex-wrap items-center gap-x-8 gap-y-3">
+      {
+        stripItems.map((item) => (
+          <li
+            class="font-mono text-sm"
+            style="color: var(--color-text-1)"
+          >
+            {item}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

@@ -1,0 +1,123 @@
+---
+import Base from "~/layouts/Base.astro";
+import { experience, education } from "~/data/experience";
+---
+
+<Base
+  title="Experience — Donghyeon Kim"
+  description="Wooster Games · Epitone · Spatial Systems · Samsung Electronics"
+>
+  <section class="container-x pt-32 pb-12">
+    <p class="t-meta mb-3">[ experience ]</p>
+    <h1 class="t-h1 max-w-3xl" style="color: var(--color-text-0)">
+      A decade across embedded AR, VR, and metaverse rendering.
+    </h1>
+  </section>
+
+  <section class="container-x pb-32">
+    <ol class="space-y-16">
+      {
+        experience.map((job, i) => (
+          <li class="grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr]">
+            <div>
+              <p class="font-mono text-xs" style="color: var(--color-text-2)">
+                {job.period}
+              </p>
+              <p class="mt-1 font-mono text-xs" style="color: var(--color-text-2)">
+                {job.location}
+              </p>
+            </div>
+            <div
+              class="border-l pl-6"
+              style="border-color: var(--color-border)"
+            >
+              <h2 class="t-h2" style="color: var(--color-text-0)">
+                {job.company}
+              </h2>
+              <p
+                class="mt-1 font-mono text-sm"
+                style="color: var(--color-brand-500)"
+              >
+                {job.role}
+              </p>
+              <ul class="mt-5 space-y-2">
+                {job.bullets.map((b) => (
+                  <li
+                    class="relative pl-5 leading-relaxed"
+                    style="color: var(--color-text-1)"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="absolute left-0 top-[0.55rem] inline-block h-1 w-2"
+                      style="background: var(--color-brand-500)"
+                    />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div
+      class="mt-24 border-t pt-16"
+      style="border-color: var(--color-border)"
+    >
+      <p class="t-meta mb-3">[ education ]</p>
+      <h2 class="t-h1 mb-12" style="color: var(--color-text-0)">Education</h2>
+      <ol class="space-y-12">
+        {
+          education.map((edu) => (
+            <li class="grid grid-cols-1 gap-6 md:grid-cols-[200px_1fr]">
+              <div>
+                <p
+                  class="font-mono text-xs"
+                  style="color: var(--color-text-2)"
+                >
+                  {edu.period}
+                </p>
+                <p
+                  class="mt-1 font-mono text-xs"
+                  style="color: var(--color-text-2)"
+                >
+                  {edu.location}
+                </p>
+              </div>
+              <div
+                class="border-l pl-6"
+                style="border-color: var(--color-border)"
+              >
+                <h3 class="t-h2" style="color: var(--color-text-0)">
+                  {edu.school}
+                </h3>
+                <p
+                  class="mt-1 font-mono text-sm"
+                  style="color: var(--color-brand-500)"
+                >
+                  {edu.degree}
+                </p>
+                <ul class="mt-5 space-y-2">
+                  {edu.bullets.map((b) => (
+                    <li
+                      class="relative pl-5 leading-relaxed"
+                      style="color: var(--color-text-1)"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="absolute left-0 top-[0.55rem] inline-block h-1 w-2"
+                        style="background: var(--color-brand-500)"
+                      />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</Base>

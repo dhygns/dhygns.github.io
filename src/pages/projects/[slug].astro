@@ -1,0 +1,226 @@
+---
+import Base from "~/layouts/Base.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((p) => ({
+    params: { slug: p.slug },
+    props: { project: p },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const d = project.data;
+---
+
+<Base title={`${d.title} — Donghyeon Kim`} description={d.summary}>
+  <article class="container-x pt-32 pb-32">
+    {/* Header */}
+    <a
+      href="/projects"
+      class="font-mono text-xs uppercase tracking-wider"
+      style="color: var(--color-text-2)"
+    >
+      ← All projects
+    </a>
+
+    <header class="mt-8 border-b pb-10" style="border-color: var(--color-border)">
+      <p class="t-meta mb-3">
+        {d.company} · {d.period}
+        {d.role && <span> · {d.role}</span>}
+      </p>
+      <h1 class="t-display max-w-4xl" style="color: var(--color-text-0)">
+        {d.title}
+      </h1>
+      <p
+        class="mt-6 max-w-2xl text-lg leading-relaxed"
+        style="color: var(--color-text-1)"
+      >
+        {d.summary}
+      </p>
+
+      {/* Accent bar */}
+      <div
+        aria-hidden="true"
+        class="mt-10 h-px w-32"
+        style={`background: ${d.accent};`}
+      >
+      </div>
+    </header>
+
+    {/* Gallery (if any images attached) */}
+    {
+      d.gallery.length > 0 && (
+        <section class="mt-12">
+          <div class="grid gap-4 md:grid-cols-2">
+            {d.gallery.map((g, i) => (
+              <figure
+                class={`overflow-hidden rounded-2xl border ${
+                  i === 0 && d.gallery.length > 1 ? "md:col-span-2" : ""
+                }`}
+                style="border-color: var(--color-border); background: var(--color-bg-1);"
+              >
+                <img
+                  src={g.src}
+                  alt={g.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="block h-full w-full object-cover"
+                />
+              </figure>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <div class="grid grid-cols-1 gap-12 pt-12 md:grid-cols-[1fr_280px]">
+      {/* Body */}
+      <div
+        class="prose-custom max-w-none"
+        style="color: var(--color-text-1)"
+      >
+        <Content />
+      </div>
+
+      {/* Sidebar */}
+      <aside class="space-y-10">
+        {
+          d.tags.length > 0 && (
+            <section>
+              <h3 class="t-meta mb-3">Stack</h3>
+              <ul class="flex flex-wrap gap-1.5">
+                {d.tags.map((tag) => (
+                  <li
+                    class="rounded-md border px-2 py-0.5 font-mono text-[11px] uppercase tracking-wider"
+                    style="border-color: var(--color-border); color: var(--color-text-1);"
+                  >
+                    {tag}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          d.awards.length > 0 && (
+            <section>
+              <h3 class="t-meta mb-3">Awards</h3>
+              <ul class="space-y-1 text-sm" style="color: var(--color-text-0)">
+                {d.awards.map((a) => (
+                  <li>{a}</li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          d.patents.length > 0 && (
+            <section>
+              <h3 class="t-meta mb-3">Patents</h3>
+              <ul class="space-y-3 text-sm">
+                {d.patents.map((p) => (
+                  <li>
+                    {p.href ? (
+                      <a
+                        href={p.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span style="color: var(--color-text-0)">
+                          {p.title}
+                        </span>
+                        {p.appNo && (
+                          <span
+                            class="ml-2 font-mono text-xs"
+                            style="color: var(--color-text-2)"
+                          >
+                            {p.appNo}
+                          </span>
+                        )}
+                      </a>
+                    ) : (
+                      <span style="color: var(--color-text-0)">{p.title}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        {
+          d.links.length > 0 && (
+            <section>
+              <h3 class="t-meta mb-3">Links</h3>
+              <ul class="space-y-1.5 text-sm">
+                {d.links.map((l) => (
+                  <li>
+                    <a
+                      href={l.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center gap-1.5"
+                    >
+                      {l.label}
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </aside>
+    </div>
+  </article>
+</Base>
+
+<style is:global>
+  .prose-custom h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-0);
+  }
+  .prose-custom h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-0);
+  }
+  .prose-custom p {
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+  .prose-custom ul {
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+    list-style: none;
+  }
+  .prose-custom li {
+    position: relative;
+    line-height: 1.7;
+    padding-left: 1rem;
+  }
+  .prose-custom li::before {
+    content: "→";
+    position: absolute;
+    left: -0.25rem;
+    color: var(--color-brand-500);
+    font-family: var(--font-mono);
+    font-size: 0.85em;
+  }
+  .prose-custom strong {
+    color: var(--color-text-0);
+    font-weight: 600;
+  }
+</style>

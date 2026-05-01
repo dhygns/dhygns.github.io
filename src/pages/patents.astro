@@ -1,0 +1,70 @@
+---
+import Base from "~/layouts/Base.astro";
+import { patents } from "~/data/patents";
+---
+
+<Base
+  title="Patents — Donghyeon Kim"
+  description="Three granted patents covering AR computing environments, Ambient Mode, and screen control."
+>
+  <section class="container-x pt-32 pb-12">
+    <p class="t-meta mb-3">[ patents ]</p>
+    <h1 class="t-h1 max-w-3xl" style="color: var(--color-text-0)">
+      Three patents — all shipped, all in production.
+    </h1>
+  </section>
+
+  <section class="container-x pb-32">
+    <ul class="space-y-6">
+      {
+        patents.map((p) => (
+          <li
+            class="rounded-2xl border p-8"
+            style="border-color: var(--color-border); background: var(--color-bg-1);"
+          >
+            <p class="t-meta mb-3">{p.project}</p>
+            <h2
+              class="text-xl font-semibold leading-snug"
+              style="color: var(--color-text-0)"
+            >
+              {p.title}
+            </h2>
+            <dl class="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 font-mono text-xs md:grid-cols-4">
+              <div>
+                <dt style="color: var(--color-text-2)">Application</dt>
+                <dd style="color: var(--color-text-0)">{p.appNo}</dd>
+              </div>
+              <div>
+                <dt style="color: var(--color-text-2)">Publication</dt>
+                <dd style="color: var(--color-text-0)">{p.pubNo}</dd>
+              </div>
+              <div>
+                <dt style="color: var(--color-text-2)">Filed</dt>
+                <dd style="color: var(--color-text-0)">{p.filed}</dd>
+              </div>
+              <div>
+                <dt style="color: var(--color-text-2)">Published</dt>
+                <dd style="color: var(--color-text-0)">{p.published}</dd>
+              </div>
+            </dl>
+            <p
+              class="mt-5 text-sm leading-relaxed"
+              style="color: var(--color-text-1)"
+            >
+              {p.blurb}
+            </p>
+            <a
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider"
+            >
+              View on patentscope.wipo.int
+              <span aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

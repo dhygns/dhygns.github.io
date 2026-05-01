@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* --- Type scale utilities (used at section level) --- */
+.t-display {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.t-h1 {
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.t-h2 {
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.t-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-2);
+}
+
+/* --- Container --- */
+.container-x {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-x {
+    padding-inline: 2rem;
+  }
+}
+
+/* --- Brand underline (used for hero accent) --- */
+.brand-underline {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-brand-500) 0%,
+    var(--color-brand-300) 100%
+  );
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.18em;
+}
+
+/* --- Link defaults --- */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-sm) var(--ease-out-expo);
+}
+a:hover {
+  color: var(--color-brand-500);
+}
+
+/* --- Scroll-in (IntersectionObserver-driven) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity var(--dur-lg) var(--ease-out-expo),
+    transform var(--dur-lg) var(--ease-out-expo);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,46 @@
+---
+const links = [
+  { href: "/projects", label: "Projects" },
+  { href: "/experience", label: "Experience" },
+  { href: "/skills", label: "Skills" },
+  { href: "/awards", label: "Awards" },
+  { href: "/playground", label: "Play" },
+  { href: "/log", label: "Log" },
+  { href: "/about", label: "About" },
+];
+
+const path = Astro.url.pathname;
+---
+
+<header class="fixed inset-x-0 top-0 z-50 backdrop-blur-md">
+  <div
+    class="container-x flex h-14 items-center justify-between border-b"
+    style="border-color: color-mix(in srgb, var(--color-border) 70%, transparent); background: color-mix(in srgb, var(--color-bg-0) 70%, transparent);"
+  >
+    <a
+      href="/"
+      class="font-mono text-sm tracking-wider"
+      aria-label="Home"
+    >
+      <span style="color: var(--color-text-0)">dhygns</span>
+      <span style="color: var(--color-brand-500)">.</span>
+    </a>
+
+    <nav class="flex items-center gap-1 text-sm">
+      {
+        links.map((l) => {
+          const active = path === l.href || path.startsWith(l.href + "/");
+          return (
+            <a
+              href={l.href}
+              class="rounded-md px-3 py-1.5 font-mono text-xs uppercase tracking-wider transition-colors"
+              style={`color: ${active ? "var(--color-text-0)" : "var(--color-text-1)"};`}
+            >
+              {l.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>

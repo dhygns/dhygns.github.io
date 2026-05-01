@@ -1,0 +1,101 @@
+---
+import Base from "~/layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+// Tailwind class map for bento spans (kept here so JIT picks them up).
+const spanClass: Record<string, string> = {
+  "1x1": "md:col-span-1 md:row-span-1",
+  "2x1": "md:col-span-2 md:row-span-1",
+  "1x2": "md:col-span-1 md:row-span-2",
+  "2x2": "md:col-span-2 md:row-span-2",
+};
+---
+
+<Base
+  title="Projects — Donghyeon Kim"
+  description="Selected projects: Live Window, Animal Company, Spatial, Ambient Mode, Air Quality Visualization, Samsung Media Square."
+>
+  <section class="container-x pt-32 pb-20">
+    <p class="t-meta mb-3">[ projects ]</p>
+    <h1 class="t-h1 max-w-3xl" style="color: var(--color-text-0)">
+      Six projects across embedded AR, live VR, and metaverse systems.
+    </h1>
+    <p
+      class="mt-6 max-w-2xl text-lg leading-relaxed"
+      style="color: var(--color-text-1)"
+    >
+      A decade of work — from CES exhibits at Samsung to a custom Vulkan
+      pipeline shipped in real OEM cars.
+    </p>
+  </section>
+
+  <section class="container-x pb-32">
+    <div
+      class="grid auto-rows-[minmax(220px,auto)] grid-cols-1 gap-4 md:grid-cols-3"
+    >
+      {
+        projects.map((p) => (
+          <a
+            href={`/projects/${p.slug}`}
+            class={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border p-6 transition-colors ${spanClass[p.data.span]}`}
+            style="border-color: var(--color-border); background: var(--color-bg-1);"
+          >
+            {/* cover image — desaturated, brand-tinted on hover */}
+            {p.data.cover && (
+              <div
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-0 bg-cover bg-center opacity-15 transition-all duration-500 group-hover:opacity-40 group-hover:scale-[1.03]"
+                style={`background-image: url(${p.data.cover}); filter: grayscale(0.4) saturate(0.8);`}
+              />
+            )}
+            {/* gradient overlay for legibility */}
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute inset-0"
+              style="background: linear-gradient(180deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0.92) 100%);"
+            />
+            {/* accent glow */}
+            <div
+              aria-hidden="true"
+              class="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-20 blur-3xl transition-opacity group-hover:opacity-60"
+              style={`background: ${p.data.accent};`}
+            />
+
+            <div class="relative">
+              <p class="t-meta mb-2">
+                {p.data.company} · {p.data.period}
+              </p>
+              <h2
+                class="mb-3 text-2xl font-semibold leading-tight"
+                style="color: var(--color-text-0)"
+              >
+                {p.data.title}
+              </h2>
+              <p
+                class="text-sm leading-relaxed"
+                style="color: var(--color-text-1)"
+              >
+                {p.data.summary}
+              </p>
+            </div>
+
+            <div class="relative mt-6 flex flex-wrap gap-1.5">
+              {p.data.tags.slice(0, 4).map((tag) => (
+                <span
+                  class="rounded-md border px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider backdrop-blur-sm"
+                  style="border-color: var(--color-border); color: var(--color-text-1); background: rgba(10,10,11,0.5);"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,77 @@
+---
+import Base from "~/layouts/Base.astro";
+
+const contacts = [
+  { label: "Email", value: "dhygns@gmail.com", href: "mailto:dhygns@gmail.com" },
+  { label: "GitHub", value: "github.com/dhygns", href: "https://github.com/dhygns" },
+  { label: "Notion", value: "uxkim.notion.site", href: "https://uxkim.notion.site" },
+  { label: "United States", value: "+1 (516) 288-2903", href: "tel:+15162882903" },
+  { label: "Korea", value: "+82 10 3891-1611", href: "tel:+821038911611" },
+];
+---
+
+<Base
+  title="About — Donghyeon Kim"
+  description="Graphics engineer, Super Prototyper, System Integrator. Based in New York and Incheon."
+>
+  <section class="container-x pt-32 pb-12">
+    <p class="t-meta mb-3">[ about ]</p>
+    <h1 class="t-display max-w-4xl" style="color: var(--color-text-0)">
+      Donghyeon Kim
+    </h1>
+    <p
+      class="mt-3 font-mono text-sm"
+      style="color: var(--color-brand-500)"
+    >
+      Super Prototyper · System Integrator
+    </p>
+  </section>
+
+  <section class="container-x pb-12">
+    <div
+      class="prose-custom max-w-3xl text-lg leading-relaxed"
+      style="color: var(--color-text-1)"
+    >
+      <p>
+        I specialize in real-time graphics development using Unity 3D, with
+        deep integration of native rendering APIs such as Vulkan and DirectX 11.
+        I have extensive experience building custom rendering pipelines,
+        external native plugins, and performance-critical features tailored for
+        embedded and cross-platform environments.
+      </p>
+      <p class="mt-6">
+        My work spans rapid prototyping of metaverse UX, optimization for
+        automotive-grade AR HUD systems, and close technical collaboration with
+        global OEM partners. I consistently deliver production-ready solutions
+        that push the boundaries of what Unity's rendering can do.
+      </p>
+    </div>
+  </section>
+
+  <section
+    class="container-x mt-16 border-t pt-16 pb-32"
+    style="border-color: var(--color-border)"
+  >
+    <p class="t-meta mb-3">[ contact ]</p>
+    <h2 class="t-h1 mb-10" style="color: var(--color-text-0)">Get in touch</h2>
+
+    <ul class="grid grid-cols-1 gap-x-12 gap-y-6 md:grid-cols-2">
+      {
+        contacts.map((c) => (
+          <li>
+            <p class="t-meta mb-1">{c.label}</p>
+            <a
+              href={c.href}
+              class="font-mono text-base"
+              style="color: var(--color-text-0)"
+              target={c.href.startsWith("http") ? "_blank" : undefined}
+              rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            >
+              {c.value}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</Base>

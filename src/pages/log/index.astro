@@ -1,0 +1,110 @@
+---
+import Base from "~/layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("log");
+
+// Group by category
+const categoryLabels: Record<string, string> = {
+  graphics: "Graphics",
+  "jekyll-gitpage": "Jekyll · GitHub Pages",
+  "unity-native-plugin": "Unity Native Plugin",
+  "gitlab-cicd": "GitLab CI/CD",
+};
+
+const categoryOrder = [
+  "graphics",
+  "unity-native-plugin",
+  "jekyll-gitpage",
+  "gitlab-cicd",
+];
+
+const grouped = categoryOrder
+  .map((cat) => ({
+    category: cat,
+    label: categoryLabels[cat] ?? cat,
+    posts: posts
+      .filter((p) => p.data.category === cat)
+      .sort((a, b) => a.data.title.localeCompare(b.data.title)),
+  }))
+  .filter((g) => g.posts.length > 0);
+---
+
+<Base
+  title="Log — Donghyeon Kim"
+  description="Engineering notes — graphics, Unity native plugins, Jekyll/GitHub Pages, CI/CD."
+>
+  <section class="container-x pt-32 pb-12">
+    <p class="t-meta mb-3">[ log ]</p>
+    <h1 class="t-h1 max-w-3xl" style="color: var(--color-text-0)">
+      Engineering notes from real bugs and real fixes.
+    </h1>
+    <p
+      class="mt-6 max-w-2xl text-lg leading-relaxed"
+      style="color: var(--color-text-1)"
+    >
+      Bilingual posts (English + 한국어). Mostly Vulkan / Unity native plugin
+      pitfalls, with the occasional Jekyll deploy gotcha.
+    </p>
+  </section>
+
+  <section class="container-x pb-32">
+    <div class="space-y-16">
+      {
+        grouped.map((g) => (
+          <div>
+            <h2
+              class="mb-6 font-mono text-xs uppercase tracking-wider"
+              style="color: var(--color-brand-500)"
+            >
+              {g.label}
+            </h2>
+            <ul
+              class="divide-y border-y"
+              style="border-color: var(--color-border); --tw-divide-opacity: 1; --divide-color: var(--color-border);"
+            >
+              {g.posts.map((p) => (
+                <li>
+                  <a
+                    href={`/log/${p.slug}`}
+                    class="group block py-5 transition-colors"
+                  >
+                    <div class="flex items-baseline justify-between gap-4">
+                      <h3
+                        class="text-lg font-medium leading-tight transition-colors group-hover:[color:var(--color-brand-500)]"
+                        style="color: var(--color-text-0)"
+                      >
+                        {p.data.title}
+                      </h3>
+                      <span
+                        aria-hidden="true"
+                        class="font-mono text-xs"
+                        style="color: var(--color-text-2)"
+                      >
+                        →
+                      </span>
+                    </div>
+                    {p.data.summary && (
+                      <p
+                        class="mt-2 max-w-3xl text-sm"
+                        style="color: var(--color-text-1)"
+                      >
+                        {p.data.summary}
+                      </p>
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  ul.divide-y > li + li {
+    border-top: 1px solid var(--color-border);
+  }
+</style>

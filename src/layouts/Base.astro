@@ -1,0 +1,90 @@
+---
+import "~/styles/global.css";
+import Nav from "~/components/Nav.astro";
+import Footer from "~/components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = "Donghyeon Kim — Super Prototyper & System Integrator",
+  description = "Real-time graphics, AR HUD, VR systems. Unity3D · Vulkan · Three.js.",
+  ogImage = "/og.png", // TODO content-todo: ship a real OG image
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.toString()} />
+    <meta name="theme-color" content="#0A0A0B" />
+    <meta name="author" content="Donghyeon Kim" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site ?? Astro.url).toString()} />
+    <meta property="og:url" content={canonicalURL.toString()} />
+    <meta property="og:site_name" content="Donghyeon Kim" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site ?? Astro.url).toString()} />
+
+    <!-- Preconnect: fonts (Geist via Vercel CDN) -->
+    <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.cdnfonts.com/css/geist-sans"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.cdnfonts.com/css/geist-mono"
+    />
+  </head>
+  <body>
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Reveal-on-scroll. ~30 LoC, no library.
+      // Elements with class="reveal" fade + lift in once they enter the viewport.
+      const els = document.querySelectorAll<HTMLElement>(".reveal");
+      if (els.length > 0 && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-in");
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.05 },
+        );
+        els.forEach((el) => io.observe(el));
+      } else {
+        // Fallback: just show everything.
+        els.forEach((el) => el.classList.add("is-in"));
+      }
+    </script>
+  </body>
+</html>

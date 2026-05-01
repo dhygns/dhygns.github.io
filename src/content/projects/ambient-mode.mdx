@@ -1,0 +1,50 @@
+---
+title: Ambient Mode
+company: Samsung Electronics
+period: 2017 — 2018
+role: Expert Software Programmer
+summary: TV-as-decoration. Captured wall + texture synthesis to make the screen blend with surrounding wallpaper.
+accent: "#FF6B35"
+cover: /images/ambient-mode-1.png
+gallery:
+  - src: /images/ambient-mode-1.png
+    alt: Ambient Mode setup demo — invisible TV
+  - src: /images/ambient-mode-2.jpg
+    alt: Ambient Mode in living room context
+  - src: /images/ambient-mode-3.jpg
+    alt: Samsung The Frame — Ambient Mode applied
+span: "1x1"
+order: 4
+tags:
+  - C++
+  - JavaScript
+  - GLSL
+  - HLSL
+  - Three.js
+  - WebGL
+  - OpenGL ES
+  - Tizen
+links:
+  - label: 2018 Samsung First Look
+    href: https://news.samsung.com/us/b-roll-2018-samsung-first-look-event/
+  - label: Setup demo
+    href: https://www.youtube.com/watch?v=u1lfVui0g5E
+patents:
+  - title: ELECTRONIC APPARATUS AND CONTROL METHOD THEREOF
+    href: https://patentscope.wipo.int/search/en/detail.jsf?docId=WO2019135475&tab=PCTBIBLIO
+    appNo: WO2019135475
+---
+
+## Overview
+
+Ambient Mode turns the QLED / The Frame / Terrace TV into part of the room when not in use — showing decoration, weather, photos, or the wall behind it. The "invisible" pattern feature captures the wall with a phone, then uses image processing and texture synthesis to fill the screen so the TV appears transparent.
+
+## My role
+
+Implemented Ambient Mode and generative art experiences for Tizen OS using OpenGL ES, Three.js, and WebGL. Designed and implemented the texture synthesis prototype (later adopted in *Disappearing Act* at Samsung First Look 2018).
+
+## Techniques
+
+- Texture synthesis from a single photographed sample
+- Color calibration + brightness balancing for varying ambient light
+- WebGL/OpenGL ES dual-stack for embedded TV deployment
